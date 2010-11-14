@@ -1,0 +1,46 @@
+@font-face { font-family: "Diavlo"; src: url('/fonts/Diavlo_LIGHT_II_37.otf'); }
+
+/* colors:
+ * Main:
+ * #ffaf00 orange
+ * #ffbf33
+ * #ffbf66
+ * Complements:
+ * #007ccc blue
+ * #009bff
+ * #33afff
+ * #4e00cc violet
+ * Background:
+ * #270066
+ */
+
+div#body {
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 50px;
+    padding:10px;
+    width:960px;
+    border-radius:5px;
+    border: 1px #ffbf33 solid;
+    -webkit-box-shadow: 0 0 4px #ffbf33;
+    -moz-box-shadow: 0 0 4px #ffbf33;
+    -o-box-shadow: 0 0 4px #ffbf33;
+    background-color: #fff;
+}
+
+body, html {
+    background-color: #270066;
+}
+
+hr#break {
+    border-top: 1px #333 solid;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+}
+
+h1#title {
+    font-size: 50pt;
+    color: #ffaf00;
+    text-shadow: 0 1px 2px #666;
+}
