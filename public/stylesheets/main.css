@@ -28,7 +28,6 @@ div#body {
     -o-box-shadow: 0 0 4px #ffbf33;
     background-color: #fff;
 }
-
 body, html {
     background-color: #270066;
 }
@@ -68,4 +67,24 @@ hr#break {
 a {
     text-decoration:none;
     color:#33afff;
+}
+#facebook-login {
+    text-align:center;
+    margin-top:40px;
+    margin-bottom:40px;
+}
+#error, #notice {
+  margin-top:20px;
+  margin-bottom:20px;
+  text-align:center;
+}
+#error span, #notice span {
+  border-radius:5px;
+  border: 1px solid #999;
+  padding:10px;
+  font-weight:bold;
+}
+#error {
+  color:red;
+  border-color:red;
 }

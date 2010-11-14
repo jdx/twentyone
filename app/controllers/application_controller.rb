@@ -1,16 +1,37 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :require_login
 
+protected
   def current_user
-      @current_user ||= User.find_by_id(session[:user_id])
+    cookie = request.cookies['fbs_' + ENV['FB_APP_ID']]
+    unless cookie
+      return
+    end
+    cookie = CGI.parse cookie
+    uid = cookie["uid"][0].to_i
+    @current_user ||= User.find_by_facebook_id(uid)
+    unless @current_user
+      access_token = cookie['"access_token'][0]
+      fbuser = FbGraph::User.me(access_token).fetch
+      @current_user = User.create({
+        :first_name => fbuser.first_name,
+        :last_name => fbuser.last_name,
+        :facebook_id => uid
+      })
+    end
+    return @current_user
   end
 
-  def signed_in?
-      !!current_user
+  def logged_in?
+    !!current_user
   end
 
-  def current_user=(user)
-      @current_suer = user
-      session[:user_id] = user.id
+  helper_method :current_user, :logged_in?
+
+  def require_login
+    unless logged_in?
+      redirect_to :login
+    end
   end
 end

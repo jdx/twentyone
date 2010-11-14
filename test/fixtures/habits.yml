@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  start_date: 2010-11-14
+  what: MyString
+
+two:
+  user_id: 1
+  start_date: 2010-11-14
+  what: MyString

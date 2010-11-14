@@ -10,19 +10,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101114045451) do
+ActiveRecord::Schema.define(:version => 20101114090338) do
 
-  create_table "authorizations", :force => true do |t|
-    t.string   "provider"
-    t.string   "uid"
-    t.integer  "user_id"
+  create_table "habit_days", :force => true do |t|
+    t.integer  "habit_id"
+    t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "token"
+  end
+
+  create_table "habits", :force => true do |t|
+    t.integer  "user_id"
+    t.date     "start_date"
+    t.string   "what"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "facebook_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
