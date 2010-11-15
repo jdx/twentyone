@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101114090338) do
+ActiveRecord::Schema.define(:version => 20101115035635) do
 
   create_table "habit_days", :force => true do |t|
     t.integer "habit_id"
@@ -19,19 +19,20 @@ ActiveRecord::Schema.define(:version => 20101114090338) do
   end
 
   create_table "habits", :force => true do |t|
-    t.integer  "user_id"
-    t.date     "start_date"
-    t.string   "what"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "user_id"
+    t.date      "start_date"
+    t.string    "what"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.integer  "facebook_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "first_name"
+    t.string    "last_name"
+    t.integer   "facebook_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.boolean   "admin"
   end
 
 end

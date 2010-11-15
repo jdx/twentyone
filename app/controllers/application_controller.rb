@@ -34,4 +34,11 @@ protected
       redirect_to :login
     end
   end
+
+  def require_admin
+    unless @current_user.admin?
+      flash[:error] = "This page is available to administrators only"
+      redirect_to :controller => :habit, :action => :view
+    end
+  end
 end

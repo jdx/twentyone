@@ -17,7 +17,7 @@
   </head>
   <body>
     <div id="body">
-      <h1 id="title">Twenty One Day Habit</h1>
+      <a href="/"><h1 id="title">Twenty One Day Habit</h1></a>
         <span id="tagline">Get shit done.</span>
         <hr id="break" />
         <%- if flash[:error] %>
@@ -33,7 +33,12 @@
         <%= yield %>
         <hr id="break" />
         <div id="footer">
-          <a id="friends-link" href="/friends">My friend's habits</span></a>
+          <% if @current_user %>
+            <a class="footer-link" href="<%= url_for friends_path %>">My friend's habits</a>
+          <% end %>
+          <% if @current_user.admin? %>
+            <a class="footer-link" href="<%= url_for admin_root_path %>">Admin</a>
+          <% end %>
           <span id="credits">Made by <a href="http://jeffdickey.info/">Jeff Dickey</a></span>
         </div>
       </div>

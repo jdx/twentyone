@@ -55,7 +55,7 @@ hr#break {
     margin-bottom:30px;
     font-size:20pt;
 }
-#friends-link {
+.footer-link {
     font-size:16pt;
     float:left;
     display:block;

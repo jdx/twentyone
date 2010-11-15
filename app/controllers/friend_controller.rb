@@ -1,4 +1,4 @@
 class FriendController < ApplicationController
-  def list
+  def index
   end
 end
