@@ -1,5 +1,14 @@
-- if @friends
+- if @friends.any?
+  %h2 Your friends' habits.
+  %span#description I expect this to get more interesting in the future
   %ul#friend-list
+    - @friends.each do |friend|
+      - if friend.habits.any?
+        %li.friend
+          %img{ :src => 'http://graph.facebook.com/%s/picture' % friend.facebook_identifier }
+          %span.name= friend.name 
+          %span.what= "Habit: " + friend.current_habit.what
+          %span.progress= "Progress: " + friend.current_habit.habit_days.count.to_s + "/21"
 - else
   #no-friends 
     %span You have no friends using Twenty One Day Habit, tell them about it!

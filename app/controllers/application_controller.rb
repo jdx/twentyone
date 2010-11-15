@@ -20,11 +20,12 @@ protected
     @current_user ||= User.find_by_facebook_id(uid)
     unless @current_user
       access_token = cookie['"access_token'][0]
-      fbuser = FbGraph::User.me(access_token).fetch
+      fbuser = fb_user
       @current_user = User.create({
         :first_name => fbuser.first_name,
         :last_name => fbuser.last_name,
-        :facebook_id => uid
+        :facebook_id => uid,
+        :facebook_identifier => fbuser.identifier
       })
     end
     return @current_user

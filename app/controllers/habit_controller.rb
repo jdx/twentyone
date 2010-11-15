@@ -1,7 +1,8 @@
 class HabitController < ApplicationController
+  before_filter :require_login
 
   def create
-    if @current_user.habits.any?
+    if @current_user.current_habit
       return redirect_to :action => :view
     end
     if request.post?
@@ -17,22 +18,20 @@ class HabitController < ApplicationController
   end
 
   def view
-    unless @current_user.habits.any?
+    unless @current_user.current_habit
       return redirect_to :action => :create
     end
-    habits = @current_user.habits.all(:order => 'start_date DESC')
-    @habit = habits[0]
+    @habit = @current_user.current_habit
     @finished_dates = []
     @habit.habit_days.each { |f| @finished_dates << f.date }
     logger.debug @finished_dates.inspect
   end
 
   def toggle_today
-    unless @current_user.habits.any?
+    unless @current_user.current_habit
       return redirect_to :action => :create
     end
-    habits = @current_user.habits.all(:order => 'start_date DESC')
-    habit = habits[0]
+    habit = @current_user.current_habit
     today ||= habit.habit_days.find_by_date Date.today
     if today
       today.destroy
@@ -48,11 +47,10 @@ class HabitController < ApplicationController
   end
 
   def cancel
-    unless @current_user.habits.any?
+    unless @current_user.current_habit
       return redirect_to :action => :create
     end
-    habits = @current_user.habits.all(:order => 'start_date DESC')
-    @habit = habits[0]
+    @habit = @current_user.current_habit
     if request.post?
       @habit.habit_days.each { |h| h.destroy }
       @habit.destroy
