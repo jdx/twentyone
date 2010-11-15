@@ -1,0 +1,13 @@
+#user-info
+  %ul
+    %li ID #{@user.id}
+    %li Name #{@user.name}
+    %li Facebook ID #{@user.facebook_id}
+    %li Created at #{@user.created_at}
+    %li Updated at #{@user.updated_at}
+    %li Is admin #{@user.admin}
+    %ul
+      - @user.habits.each do |h|
+        %li
+          = link_to "Habit: #{h.what}", admin_habit_path(h)
+= link_to "View all users", admin_user_index_path
