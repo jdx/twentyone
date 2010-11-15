@@ -8,6 +8,13 @@ protected
     cookie = CGI.parse cookie
     access_token = cookie['"access_token'][0]
     fbuser = FbGraph::User.me(access_token).fetch
+  rescue FbGraph::Exception
+    clear_fb_user_cookie
+    return nil
+  end
+
+  def clear_fb_user_cookie
+    cookies.delete('fbs_' + ENV['FB_APP_ID'])
   end
 
   def current_user
@@ -21,6 +28,7 @@ protected
     unless @current_user
       access_token = cookie['"access_token'][0]
       fbuser = fb_user
+      return nil unless fbuser
       @current_user = User.create({
         :first_name => fbuser.first_name,
         :last_name => fbuser.last_name,
