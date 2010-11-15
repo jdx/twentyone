@@ -38,7 +38,7 @@ protected
   def require_admin
     unless @current_user.admin?
       flash[:error] = "This page is available to administrators only"
-      redirect_to root
+      redirect_to root_path
     end
   end
 end
