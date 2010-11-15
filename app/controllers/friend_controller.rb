@@ -8,8 +8,6 @@ class FriendController < ApplicationController
     end
     fb_ids = []
     fbuser.friends.each { |f| fb_ids << f.identifier }
-    @friends = [] 
-    @friends << @current_user
-    @friends << User.where(:facebook_identifier => fb_ids)
+    @friends = User.where(:facebook_identifier => fb_ids)
   end
 end
