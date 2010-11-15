@@ -3,6 +3,13 @@ class ApplicationController < ActionController::Base
   before_filter :require_login
 
 protected
+  def fb_user
+    cookie = request.cookies['fbs_' + ENV['FB_APP_ID']]
+    cookie = CGI.parse cookie
+    access_token = cookie['"access_token'][0]
+    fbuser = FbGraph::User.me(access_token).fetch
+  end
+
   def current_user
     cookie = request.cookies['fbs_' + ENV['FB_APP_ID']]
     unless cookie
@@ -27,7 +34,7 @@ protected
     !!current_user
   end
 
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :fb_user
 
   def require_login
     unless logged_in?
