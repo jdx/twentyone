@@ -13,10 +13,9 @@
 ActiveRecord::Schema.define(:version => 20101114090338) do
 
   create_table "habit_days", :force => true do |t|
-    t.integer  "habit_id"
-    t.date     "date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "habit_id"
+    t.date    "date"
+    t.time    "time"
   end
 
   create_table "habits", :force => true do |t|

@@ -1,0 +1,44 @@
+#habit-view
+  %h2= @habit.what
+  %table#calendar
+    %tr
+      %th= "Sunday"
+      %th= "Monday"
+      %th= "Tuesday"
+      %th= "Wednesday"
+      %th= "Thursday"
+      %th= "Friday"
+      %th= "Saturday"
+    - day = @habit.start_date - @habit.start_date.wday
+    - last_day = day + 21
+    - weeks = 0
+    - max_weeks = @habit.start_date.wday == 0 ? 3 : 4
+    - until weeks == max_weeks
+      %tr 
+        - begin
+          - if day < @habit.start_date
+            %td.past
+              .container
+                %span &nbsp;
+                %span= day.strftime "%m/%d"
+          - else
+            - if day > @habit.start_date + 20
+              %td 
+                .container
+                  %span &nbsp;
+                  %span= day.strftime "%m/%d"
+            - else
+              %td{:class => day == Date.today && "today" }
+                .container
+                  %span= "Day %s" % (day + 1 - @habit.start_date).to_s
+                  %span= day.strftime "%m/%d"
+                  - if @finished_dates.include?(day)
+                    %span.x X
+          - day = day + 1
+        - end until day.wday == 0
+      - weeks = weeks + 1
+  #total
+    %span#days-completed= @finished_dates.count
+    %span /
+    %span#days-total 21
+  %a=link_to "Cancel Habit", :controller => "habit", :action => "cancel"

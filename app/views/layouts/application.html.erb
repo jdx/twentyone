@@ -2,9 +2,18 @@
 <html>
   <head>
     <title>Twenty One Day Habit</title>
-    <%= stylesheet_link_tag :all %>
-    <%= javascript_include_tag :defaults %>
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
+    <%= stylesheet_link_tag "reset" %>
+    <%= stylesheet_link_tag "main" %>
+    <%= stylesheet_link_tag "habit-create" %>
+    <%= stylesheet_link_tag "habit-view" %>
+    <%= stylesheet_link_tag "habit-cancel" %>
+    <%= stylesheet_link_tag "friends-list" %>
+    <%= javascript_include_tag "jquery-1.4.4.min" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tag %>
+    <meta property="og:description" content="Helps you build better habits!" />
+    <meta property="og:image" content="http://twentyonedayhabit.heroku.com/img/single_day.png" />
   </head>
   <body>
     <div id="body">
@@ -23,7 +32,10 @@
         <%- end %>
         <%= yield %>
         <hr id="break" />
-        <span id="credits">Made by <a href="http://jeffdickey.info/">Jeff Dickey</a></span>
+        <div id="footer">
+          <a id="friends-link" href="/friends">My friend's habits</span></a>
+          <span id="credits">Made by <a href="http://jeffdickey.info/">Jeff Dickey</a></span>
+        </div>
       </div>
   </body>
 </html>

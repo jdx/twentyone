@@ -1,0 +1,23 @@
+/* colors:
+ * Main:
+ * #ffaf00 orange
+ * #ffbf33
+ * #ffbf66
+ * Complements:
+ * #007ccc blue
+ * #009bff
+ * #33afff
+ * #4e00cc violet
+ * Background:
+ * #270066
+ */
+
+#no-friends {
+  margin-top:40px;
+  margin-bottom:40px;
+  text-align:center;
+}
+#no-friends a {
+  display:block;
+  margin-top:20px;
+}

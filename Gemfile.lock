@@ -43,6 +43,7 @@ GEM
       json
       oauth2 (>= 0.1.0)
       rest-client (>= 1.4)
+    haml (3.0.23)
     i18n (0.4.2)
     json (1.4.6)
     mail (2.2.9)
@@ -89,5 +90,6 @@ PLATFORMS
 
 DEPENDENCIES
   fb_graph
+  haml
   rails (= 3.0.1)
   sqlite3-ruby

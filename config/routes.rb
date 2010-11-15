@@ -1,7 +1,8 @@
 Twentyone::Application.routes.draw do
-  root :to => "home#index"
+  root :to => "habit#view"
   match 'login' => "home#login"
   match 'habit/create' => "habit#create"
-  match 'habit/' => "habit#view"
-  match 'habit/today' => "habit#today"
+  match 'habit/toggle_today' => "habit#toggle_today"
+  match 'habit/cancel' => "habit#cancel"
+  match 'friends' => "friend#list"
 end

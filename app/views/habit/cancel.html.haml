@@ -1,0 +1,4 @@
+.cancel-confirm
+  %span You sure you want to cancel? 
+  = form_tag(:controller => "habit", :action => "cancel") do
+    %input{ :type => "submit", :value => "Yes, I don't want to do it anymore!" }

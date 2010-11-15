@@ -55,11 +55,23 @@ hr#break {
     margin-bottom:30px;
     font-size:20pt;
 }
+#friends-link {
+    font-size:16pt;
+    float:left;
+    display:block;
+    margin-left:20px;
+    margin-top:20px;
+    margin-bottom:15px;
+    font-weight:bold;
+}
+#footer {
+  height:55px;
+}
 #credits {
     font-size:16pt;
-    text-align:right;
+    float:right;
     display:block;
-    margin-right:60px;
+    margin-right:20px;
     margin-top:20px;
     margin-bottom:15px;
     font-weight:bold;
@@ -74,17 +86,11 @@ a {
     margin-bottom:40px;
 }
 #error, #notice {
-  margin-top:20px;
-  margin-bottom:20px;
+  margin-top:40px;
+  margin-bottom:40px;
   text-align:center;
-}
-#error span, #notice span {
-  border-radius:5px;
-  border: 1px solid #999;
-  padding:10px;
   font-weight:bold;
 }
 #error {
   color:red;
-  border-color:red;
 }

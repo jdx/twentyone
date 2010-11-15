@@ -1,3 +1,33 @@
 <%= form_tag(:controller => "habit", :action => "create") do %>
-  <input type="submit" value="Start the habit!" />
+  <div class="form-body">
+    <div class="input">
+      <label for="what">I am going to start doing this every day:</label>
+      <input type="text" id="what" name="what" maxlength="70" size="50" />
+      <label for="when">I am going to start:</label>
+      <select id="when" name="when">
+        <option value="<%= Date.today %>">Today</option>
+        <option value="<%= Date.today + 1 %>">Tomorrow</option>
+        <% from = Date.today + 2 %>
+        <% to = from + 5 %>
+        <% while from != to do %>
+          <option value="<%= from %>"><%= from.strftime "%A" %></option>
+          <% from = from + 1 %>
+        <% end %>
+      </select>
+    </div>
+    <div id="samples">
+      <span class="info">What other people are doing:</span>
+      <ul>
+        <li>Get up before 6 AM.</li>
+        <li>Write a blog article.</li>
+        <li>Drink a liter of water in the morning.</li>
+        <li>Meditate.</li>
+        <li>Exercise for 20 minutes a day.</li>
+      </ul>
+      <span class="tip">(Click to use)</span>
+    </div>
+  </div>
+  <div id="submit">
+    <input type="submit" value="Start the habit!" />
+  </div>
 <% end %>

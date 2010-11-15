@@ -1,0 +1,68 @@
+/* colors:
+ * Main:
+ * #ffaf00 orange
+ * #ffbf33
+ * #ffbf66
+ * Complements:
+ * #007ccc blue
+ * #009bff
+ * #33afff
+ * #4e00cc violet
+ * Background:
+ * #270066
+ */
+
+h2 {
+  font-size:20pt;
+  font-weight:normal;
+  color:#ffa000;
+  text-align:center;
+}
+#habit-view {
+  margin:30px 15px;
+}
+#calendar {
+  margin-top:30px;
+  margin-bottom:30px;
+  margin-left:auto;
+  margin-right:auto;
+}
+#calendar td, #calendar th {
+  padding:0;
+  border:1px solid #bbb;
+  text-align:center;
+  vertical-align:middle;
+  cursor: default;
+}
+#calendar td .container {
+  padding:25px;
+  position:relative;
+}
+#calendar td span {
+  display:block;
+  margin:5px;
+}
+#calendar .past {
+  background-color:gray;
+}
+#calendar .today {
+  cursor: pointer;
+  background-color:#a6d4f2;
+}
+#calendar .x {
+  color:red;
+  position:absolute;
+  top:0px;
+  left:0px;
+  bottom:0px;
+  right:0px;
+  font-size:72pt;
+  font-family:'arial';
+  opacity:.5;
+}
+#total {
+  font-size:24pt;
+  margin-top:40px;
+  margin-bottom:15px;
+  text-align:center;
+}
