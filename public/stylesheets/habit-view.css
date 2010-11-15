@@ -31,7 +31,6 @@ h2 {
   padding: 5px;
 }
 #calendar td, #calendar th {
-  padding:0;
   border:1px solid #bbb;
   text-align:center;
   vertical-align:middle;
