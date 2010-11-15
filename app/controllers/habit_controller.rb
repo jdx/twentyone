@@ -38,7 +38,7 @@ class HabitController < ApplicationController
       today.destroy
       result = { :status => "Removed" }
     else
-      HabitDay.create :habit => habit, :date => Date.today, :time => Time.now
+      HabitDay.create :habit => habit, :date => Date.today
       result = { :status => "Created" }
     end
     respond_to do |format|

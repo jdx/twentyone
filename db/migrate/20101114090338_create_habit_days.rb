@@ -3,7 +3,8 @@ class CreateHabitDays < ActiveRecord::Migration
     create_table :habit_days do |t|
       t.integer :habit_id
       t.date :date
-      t.time :time
+
+      t.timestamps
     end
   end
 
