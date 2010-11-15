@@ -35,9 +35,9 @@
         <div id="footer">
           <% if @current_user %>
             <a class="footer-link" href="<%= url_for friends_path %>">My friend's habits</a>
-          <% end %>
-          <% if @current_user.admin? %>
-            <a class="footer-link" href="<%= url_for admin_root_path %>">Admin</a>
+            <% if @current_user.admin? %>
+              <a class="footer-link" href="<%= url_for admin_root_path %>">Admin</a>
+            <% end %>
           <% end %>
           <span id="credits">Made by <a href="http://jeffdickey.info/">Jeff Dickey</a></span>
         </div>
