@@ -12,5 +12,6 @@
 - else
   #no-friends 
     %span You have no friends using Twenty One Day Habit, tell them about it!
-    = javascript_include_tag "http://static.ak.fbcdn.net/connect.php/js/FB.Share"
-    %a{ :name => "fb_share"}
+#facebook-share
+  = javascript_include_tag "http://static.ak.fbcdn.net/connect.php/js/FB.Share"
+  %a{ :name => "fb_share"}
