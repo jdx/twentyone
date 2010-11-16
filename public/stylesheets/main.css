@@ -52,7 +52,7 @@ hr#break {
     margin-bottom:30px;
     font-size:20pt;
 }
-.footer-link {
+.jooter-link {
     font-size:16pt;
     float:left;
     display:block;
@@ -63,6 +63,7 @@ hr#break {
 }
 #footer {
   height:55px;
+  position:relative;
 }
 #credits {
     font-size:16pt;
@@ -139,4 +140,11 @@ input[type="submit"]:active, .button:active {
   margin-top:15px;
   margin-bottom:15px;
   font-weight:bold;
+}
+#version {
+  display: block;
+  position: absolute;
+  color:#ff5e00;
+  right:0px;
+  bottom:-40px;
 }

@@ -35,6 +35,7 @@
         <%= content_for?(:content) ? yield(:content) : yield %>
         <hr id="break" />
         <div id="footer">
+          <a href="http://github.com/dickeytk/twentyone" id="version">Version: <%= version %></a>
           <% if @current_user %>
             <%= link_to_unless_current("Your friends' habits", friends_path, :class => 'footer-link') do %><%- end %>
             <%- if @current_user.habits.any? %>
