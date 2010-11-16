@@ -26,7 +26,7 @@
   margin:5px;
 }
 #calendar .past {
-  background-color:gray;
+  background-color:#ccc;
 }
 #calendar .today {
   cursor: pointer;

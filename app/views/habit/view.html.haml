@@ -17,7 +17,7 @@
     - until weeks == max_weeks
       %tr 
         - begin
-          - if day < @habit.start_date
+          - if day < Date.today
             %td.past
               .container
                 %span &nbsp;
