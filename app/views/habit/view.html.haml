@@ -17,36 +17,15 @@
     - until weeks == max_weeks
       %tr 
         - begin
-          - if day < Date.today
-            - if day > @habit.start_date + 20
-              %td.past
-                .container
-                  %span &nbsp;
-                  %span= day.strftime "%m/%d"
-                  - if @finished_dates.include?(day)
-                    %span.x X
-            - else
-              %td.past
-                .container
-                  %span= "Day %s" % (day + 1 - @habit.start_date).to_s
-                  %span= day.strftime "%m/%d"
-                  - if @finished_dates.include?(day)
-                    %span.x X
-          - else
-            - if day > @habit.start_date + 20
-              %td 
-                .container
-                  %span &nbsp;
-                  %span= day.strftime "%m/%d"
-                  - if @finished_dates.include?(day)
-                    %span.x X
-            - else
-              %td{:class => day == Date.today && "today" }
-                .container
-                  %span= "Day %s" % (day + 1 - @habit.start_date).to_s
-                  %span= day.strftime "%m/%d"
-                  - if @finished_dates.include?(day)
-                    %span.x X
+          %td{:class => day == Date.today ? "today" : day < Date.today ? "past" : "" }
+            .container
+              - if day >= @habit.start_date && day <= @habit.start_date + 21
+                %span= "Day %s" % (day + 1 - @habit.start_date).to_s
+              - else
+                %span &nbsp;
+              %span= day.strftime "%m/%d"
+              - if @finished_dates.include?(day)
+                %span.x X
           - day = day + 1
         - end until day.wday == 0
       - weeks = weeks + 1
