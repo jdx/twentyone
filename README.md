@@ -16,3 +16,4 @@ Wish list
 * Add social features
 * Figure out what to do when a user finishes their habit
 * iPhone app
+* Firefox compatibility (-moz and stuff)
