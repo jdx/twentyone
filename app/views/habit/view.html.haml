@@ -18,12 +18,20 @@
       %tr 
         - begin
           - if day < Date.today
-            %td.past
-              .container
-                %span &nbsp;
-                %span= day.strftime "%m/%d"
-                - if @finished_dates.include?(day)
-                  %span.x X
+            - if day > @habit.start_date + 20
+              %td.past
+                .container
+                  %span &nbsp;
+                  %span= day.strftime "%m/%d"
+                  - if @finished_dates.include?(day)
+                    %span.x X
+            - else
+              %td.past
+                .container
+                  %span= "Day %s" % (day + 1 - @habit.start_date).to_s
+                  %span= day.strftime "%m/%d"
+                  - if @finished_dates.include?(day)
+                    %span.x X
           - else
             - if day > @habit.start_date + 20
               %td 
