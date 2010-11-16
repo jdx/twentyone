@@ -29,4 +29,5 @@ Wish list
 * Allow admin to delete users
 * Allow admin to reset password
 * Make a logo, put it on jeffdickey.info
+* Put this on: http://developers.facebook.com/docs/reference/plugins/like-box using http://www.facebook.com/apps/application.php?id=165102360190591
 * Allow facebook login to redirect on FbGraph::Exception
