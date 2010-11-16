@@ -15,3 +15,4 @@ Wish list
 * Add memcached support
 * Add social features
 * Figure out what to do when a user finishes their habit
+* iPhone app
