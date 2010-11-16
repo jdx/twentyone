@@ -1,42 +1,28 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :require_login
+  rescue_from FbGraph::Exception, :with => :fbexception
+
+  def fbexception
+    redirect_to :controller => :facebook, :action => :login
+  end
 
 protected
-  def fb_user
-    cookie = request.cookies['fbs_' + ENV['FB_APP_ID']]
-    cookie = CGI.parse cookie
-    access_token = cookie['"access_token'][0]
+  def fbuser
+    unless @current_user
+      return nil
+    end
+    access_token = @current_user.access_token
     fbuser = FbGraph::User.me(access_token).fetch
   rescue FbGraph::Exception
-    clear_fb_user_cookie
+    @current_user.access_token = nil
+    @current_user.save
     return nil
   end
 
-  def clear_fb_user_cookie
-    cookies.delete('fbs_' + ENV['FB_APP_ID'])
-  end
-
   def current_user
-    cookie = request.cookies['fbs_' + ENV['FB_APP_ID']]
-    unless cookie
-      return
-    end
-    cookie = CGI.parse cookie
-    uid = cookie["uid"][0].to_i
-    @current_user ||= User.find_by_facebook_id(uid)
-    unless @current_user
-      access_token = cookie['"access_token'][0]
-      fbuser = fb_user
-      return nil unless fbuser
-      @current_user = User.create({
-        :first_name => fbuser.first_name,
-        :last_name => fbuser.last_name,
-        :facebook_id => uid,
-        :facebook_identifier => fbuser.identifier
-      })
-    end
-    return @current_user
+    @current_user ||= User.find_by_id(session[:user_id])
+    return nil
   end
 
   def logged_in?

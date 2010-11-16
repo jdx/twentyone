@@ -1,0 +1,21 @@
+#regular-login {
+  display:none;
+}
+#regular-login form {
+  display:inline-block;
+  border: 1px dotted #ccc;
+  padding: 20px;
+}
+#regular-login label {
+  display:block;
+  float:left;
+  clear:left;
+  width:100px;
+  margin-top:2px;
+}
+#regular-login p {
+  margin-bottom: 10px;
+}
+#regular-login input[type="submit"] {
+  text-align:center;
+}

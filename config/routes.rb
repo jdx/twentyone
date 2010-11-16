@@ -1,6 +1,12 @@
 Twentyone::Application.routes.draw do
-  root :to => "habit#view"
+  get "facebook/callback"
+
+  root :to => "home#index"
   match 'login' => "home#login"
+  match 'logout' => "home#logout"
+  match 'auth/facebook' => "facebook#login"
+  match 'auth/facebook/callback' => "facebook#callback"
+  match 'habit' => "habit#view"
   match 'habit/create' => "habit#create"
   match 'habit/toggle_today' => "habit#toggle_today"
   match 'habit/cancel' => "habit#cancel"

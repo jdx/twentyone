@@ -1,7 +1,14 @@
 $(document).ready(function() {
     setup_habit_view();
     setup_habit_create();
+    setup_login();
 });
+
+function setup_login() {
+  $('#no-facebook').click(function() {
+    $('#regular-login').show();
+  });
+}
 
 function setup_habit_create() {
   $('#samples ul li').click(function() {

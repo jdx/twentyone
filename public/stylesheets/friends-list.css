@@ -1,17 +1,3 @@
-/* colors:
- * Main:
- * #ffaf00 orange
- * #ffbf33
- * #ffbf66
- * Complements:
- * #007ccc blue
- * #009bff
- * #33afff
- * #4e00cc violet
- * Background:
- * #270066
- */
-
 #no-friends {
   margin-top:40px;
   margin-bottom:40px;
@@ -47,7 +33,10 @@
 .friend span {
   display:block;
   margin-bottom:5px;
+  font-size:12pt;
 }
 .friend .name {
-  color: #ffaf00;
+  color: #ff5e00;
+  font-size:14pt;
+  font-weight:bold;
 }

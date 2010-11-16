@@ -1,6 +1,5 @@
-%h2 Cancel your habit.
-%span#description Canceling a habit will delete your current habit, allowing you to create a new one
+%h2 Start a new habit
+%span#description This will delete your current habit.
 .cancel-confirm
-  %span Are you sure?
   = form_tag(:controller => "habit", :action => "cancel") do
-    %input{ :type => "submit", :value => "Yes, I don't want to do it anymore!" }
+    %input{ :type => "submit", :value => "Start a new habit" }

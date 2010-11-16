@@ -1,0 +1,27 @@
+%h2 We are creatures of habit.
+%p.copy Studies are now proving what practical people have known for years. We operate out of our own habits. When we get used to doing something it is incredibly difficult to quit. This is a gift and a curse.
+%h2 Use it to your advantage.
+%p.copy Force yourself into doing something productive. Use your willpower to convince yourself to do something for 21 days. At the end of 21 days, you will have built your brain into expecting it.
+%h2 Hold yourself accountable.
+%p.copy Twenty One Day Habit will let you keep track of it. To get started, click the login below. (If you can't see it, I'm working on a solution, I'll keep you posted.)
+.content-block
+  :plain
+    <fb:login-button></fb:login-button>
+  #fb-root
+  %script(src="http://connect.facebook.net/en_US/all.js")
+  :javascript
+    FB.init({appId: '#{ENV['FB_APP_ID']}', status: true, cookie: true, xfbml: true});
+    FB.Event.subscribe('auth.login', function(response) {
+      window.location.reload();
+    });
+.content-block
+  %a#no-facebook Rather not use facebook?
+  #regular-login
+    = form_tag login_path do
+      %p
+        %label{ :for => 'username' } Username
+        %input#username{ :name => 'username', :type => 'text' }
+      %p
+        %label{ :for => 'password' } Password
+        %input#password{ :name => 'password', :type => 'password' }
+      %input{ :type => "submit", :value => 'Login/Register' }
