@@ -5,6 +5,7 @@ Twentyone::Application.routes.draw do
   match 'login' => "home#login"
   match 'logout' => "home#logout"
   match 'auth/facebook' => "facebook#login"
+  match 'facebook/link' => "facebook#link"
   match 'auth/facebook/callback' => "facebook#callback"
   match 'habit' => "habit#view"
   match 'habit/create' => "habit#create"

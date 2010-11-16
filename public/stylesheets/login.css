@@ -4,7 +4,7 @@
 #regular-login form {
   display:inline-block;
   border: 1px dotted #ccc;
-  padding: 20px;
+  padding: 10px 20px;
 }
 #regular-login label {
   display:block;

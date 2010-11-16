@@ -4,7 +4,13 @@ class ApplicationController < ActionController::Base
   rescue_from FbGraph::Exception, :with => :fbexception
 
   def fbexception
-    redirect_to :controller => :facebook, :action => :login
+    @current_user.facebook_access_token = nil
+    @current_user.save
+    if @current_user.facebook_identifier
+      redirect_to auth_facebook_path
+    else
+      redirect_to facebook_link_path
+    end
   end
 
 protected
@@ -12,17 +18,12 @@ protected
     unless @current_user
       return nil
     end
-    access_token = @current_user.access_token
+    access_token = @current_user.facebook_access_token
     fbuser = FbGraph::User.me(access_token).fetch
-  rescue FbGraph::Exception
-    @current_user.access_token = nil
-    @current_user.save
-    return nil
   end
 
   def current_user
     @current_user ||= User.find_by_id(session[:user_id])
-    return nil
   end
 
   def logged_in?

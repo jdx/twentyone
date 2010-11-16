@@ -113,3 +113,30 @@ a {
 .body {
   font-family: 'Droid Serif';
 }
+input[type="submit"], .button {
+  color:#fff;
+  font-family:Diavlo;
+  font-size:16pt;
+  padding:10px;
+  border-radius:4px;
+  border:1px solid black;
+  cursor:pointer;
+  background-color:#ff5e00;
+  -webkit-box-shadow: 0 1px 4px #bbb;
+  display:inline-block;
+  text-align:center;
+  margin-top:20px;
+  margin-bottom:40px;
+}
+input[type="submit"]:active, .button:active {
+  -webkit-transform:translate(0px, 1px);
+}
+.show-block {
+  display:block !important;
+}
+.error-list li {
+  color:red;
+  margin-top:15px;
+  margin-bottom:15px;
+  font-weight:bold;
+}

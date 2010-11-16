@@ -1,6 +1,4 @@
-class Admin::HabitController < ApplicationController
-  before_filter :require_admin
-
+class Admin::HabitController < Admin::AdminController
   def index
     @habits = Habit.all
   end

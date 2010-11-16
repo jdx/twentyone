@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101115054135) do
+ActiveRecord::Schema.define(:version => 20101116065507) do
 
   create_table "habit_days", :force => true do |t|
     t.integer  "habit_id"
@@ -30,11 +30,13 @@ ActiveRecord::Schema.define(:version => 20101115054135) do
   create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "facebook_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin"
     t.string   "facebook_identifier"
+    t.string   "facebook_access_token"
+    t.string   "username"
+    t.string   "password"
   end
 
 end

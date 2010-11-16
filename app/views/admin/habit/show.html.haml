@@ -1,9 +1,8 @@
 %ul
   %li ID #{@habit.id}
-  %li= link_to @habit.user.name, admin_user_path(@habit.user)
+  %li= link_to @habit.user, admin_user_path(@habit.user)
   %li What #{@habit.what}
   %li Start date #{@habit.start_date}
   %li Created at #{@habit.created_at}
   %li Updated at #{@habit.updated_at}
   %li Status #{@habit.habit_days.count}/21
-= link_to "View all habits", admin_habit_index_path

@@ -5,19 +5,15 @@
 %h2 Hold yourself accountable.
 %p.copy Twenty One Day Habit will let you keep track of it. To get started, click the login below. (If you can't see it, I'm working on a solution, I'll keep you posted.)
 .content-block
-  :plain
-    <fb:login-button></fb:login-button>
-  #fb-root
-  %script(src="http://connect.facebook.net/en_US/all.js")
-  :javascript
-    FB.init({appId: '#{ENV['FB_APP_ID']}', status: true, cookie: true, xfbml: true});
-    FB.Event.subscribe('auth.login', function(response) {
-      window.location.reload();
-    });
+  %a= link_to "Log in with Facebook", auth_facebook_path
 .content-block
   %a#no-facebook Rather not use facebook?
-  #regular-login
+  #regular-login{ :class => @errors && "show-block" }
     = form_tag login_path do
+      - if @errors
+        %ul.error-list
+          - @errors.each do |error|
+            %li= error[1]
       %p
         %label{ :for => 'username' } Username
         %input#username{ :name => 'username', :type => 'text' }

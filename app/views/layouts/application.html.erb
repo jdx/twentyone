@@ -32,12 +32,17 @@
             <span><%= flash[:notice] %></span>
           </div>
         <%- end %>
-        <%= yield %>
+        <%= content_for?(:content) ? yield(:content) : yield %>
         <hr id="break" />
         <div id="footer">
           <% if @current_user %>
-            <a class="footer-link" href="<%= url_for friends_path %>">Your friends' habits</a>
-            <%= link_to "Logout", logout_path, :class => 'footer-link' %>
+            <%= link_to_unless_current("Your friends' habits", friends_path, :class => 'footer-link') do %><%- end %>
+            <%- if @current_user.habits.any? %>
+              <%= link_to_unless_current("Your habit", habit_path, :class => 'footer-link') do %><%- end %>
+            <%- else %>
+              <%= link_to_unless_current("Create habit", habit_create_path, :class => 'footer-link') do %><%- end %>
+            <%- end %>
+            <%= link_to "Logout", logout_path, :class => 'footer-link', :class => 'footer-link' %>
             <% if @current_user.admin? %>
               <a class="footer-link" href="<%= url_for admin_root_path %>">Admin</a>
             <% end %>
