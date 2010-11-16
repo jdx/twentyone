@@ -52,14 +52,18 @@ hr#break {
     margin-bottom:30px;
     font-size:20pt;
 }
-.jooter-link {
+.footer-link {
     font-size:16pt;
-    float:left;
-    display:block;
     margin-left:20px;
-    margin-top:20px;
-    margin-bottom:15px;
     font-weight:bold;
+}
+#footer-links {
+  margin-top:20px;
+  margin-bottom:20px;
+  float:left;
+}
+#footer-links li {
+  display:inline;
 }
 #footer {
   height:55px;
@@ -78,6 +82,7 @@ a {
     text-decoration:none;
     color:#5c90dc;
     cursor: pointer;
+    font-size:16pt;
 }
 .content-block {
     text-align:center;
@@ -147,4 +152,5 @@ input[type="submit"]:active, .button:active {
   color:#ff5e00;
   right:0px;
   bottom:-40px;
+  font-size:12pt;
 }
