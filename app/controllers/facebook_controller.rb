@@ -22,12 +22,11 @@ class FacebookController < ApplicationController
           # Fucking users trying to screw up my data... boy I tell ya
           old_user = user
           user = User.find_by_id(session[:user_id])
-          old_user.facebook_identifier = nil;
           old_user.habits.each do |h|
             h.user = user
             h.save()
           end
-          old_user.save()
+          old_user.destroy()
         end
       end
     else
