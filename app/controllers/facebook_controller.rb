@@ -43,6 +43,8 @@ class FacebookController < ApplicationController
                             :facebook_identifier => fb_user.identifier})
       end
     end
+    user.first_name = fb_user.first_name
+    user.last_name = fb_user.last_name
     user.facebook_identifier = fb_user.identifier
     user.facebook_access_token = access_token
     user.save()
