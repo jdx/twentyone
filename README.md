@@ -29,3 +29,4 @@ Wish list
 * Allow admin to delete users
 * Allow admin to reset password
 * Make a logo, put it on jeffdickey.info
+* Allow facebook login to redirect on FbGraph::Exception
