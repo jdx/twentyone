@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :check_domain
   before_filter :require_login
   rescue_from FbGraph::Exception, :with => :fbexception
 
@@ -32,10 +33,13 @@ protected
 
   helper_method :current_user, :logged_in?, :fb_user
 
+  def check_domain
+    return redirect_to request.protocol + request.host_with_port[4..-1] + request.request_uri if /^www/.match(request.host)
+    return redirect_to request.protocol + 'twentyonedayhabit.com' + request.request_uri if /heroku.com$/.match(request.host)
+  end
+
   def require_login
-    unless logged_in?
-      redirect_to :login
-    end
+    redirect_to :login unless logged_in?
   end
 
   def require_admin
