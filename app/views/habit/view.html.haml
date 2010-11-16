@@ -22,12 +22,16 @@
               .container
                 %span &nbsp;
                 %span= day.strftime "%m/%d"
+                - if @finished_dates.include?(day)
+                  %span.x X
           - else
             - if day > @habit.start_date + 20
               %td 
                 .container
                   %span &nbsp;
                   %span= day.strftime "%m/%d"
+                  - if @finished_dates.include?(day)
+                    %span.x X
             - else
               %td{:class => day == Date.today && "today" }
                 .container
