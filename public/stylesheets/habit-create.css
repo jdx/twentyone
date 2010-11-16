@@ -26,6 +26,9 @@
   margin-bottom:30px;
   color: #ff5e00;
 }
+#what {
+  width:560px;
+}
 #samples ul li {
   color:#33afff;
   cursor:pointer;
