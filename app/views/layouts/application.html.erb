@@ -13,6 +13,7 @@
     <%= stylesheet_link_tag "friends-list" %>
     <%= javascript_include_tag "jquery-1.4.4.min" %>
     <%= javascript_include_tag "application" %>
+    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <%= csrf_meta_tag %>
     <meta property="og:description" content="Helps you build better habits!" />
     <meta property="og:image" content="http://twentyonedayhabit.heroku.com/img/single_day.png" />
@@ -29,39 +30,42 @@
   </head>
   <body>
     <div id="body">
-      <a href="/"><h1 id="title">Twenty One Day Habit</h1></a>
+      <div id="header">
+        <a href="/"><h1 id="title">Twenty One Day Habit</h1></a>
         <span id="tagline">Get shit done.</span>
-        <hr id="break" />
-        <%- if flash[:error] %>
-          <div id="error">
-            <span id="error"><%= flash[:error] %></span>
-          </div>
-        <%- end %>
-        <%- if flash[:notice] %>
-          <div id="notice">
-            <span><%= flash[:notice] %></span>
-          </div>
-        <%- end %>
-        <%= content_for?(:content) ? yield(:content) : yield %>
-        <hr id="break" />
-        <div id="footer">
-          <a href="http://github.com/dickeytk/twentyone" id="version">Version: <%= version %></a>
-          <ul id="footer-links">
-            <% if @current_user %>
-              <li><%= link_to_unless_current("Your friends' habits", friends_path, :class => 'footer-link') do %><%- end %></li>
-              <%- if @current_user.habits.any? %>
-                <li><%= link_to_unless_current("Your habit", habit_path, :class => 'footer-link') do %><%- end %></li>
-              <%- else %>
-                <li><%= link_to_unless_current("Create habit", habit_create_path, :class => 'footer-link') do %><%- end %></li>
-              <%- end %>
-                <li><%= link_to "Logout", logout_path, :class => 'footer-link', :class => 'footer-link' %></li>
-              <% if @current_user.admin? %>
-                <li><a class="footer-link" href="<%= url_for admin_root_path %>">Admin</a></li>
-              <% end %>
-            <% end %>
-          </ul>
-          <span id="credits">Made by <a href="http://jeffdickey.info/">Jeff Dickey</a></span>
-        </div>
+        <fb:like id="like-button" href="http://www.facebook.com/apps/application.php?id=165102360190591" layout="button_count" font="segoe ui"></fb:like>
       </div>
+      <hr id="break" />
+      <%- if flash[:error] %>
+        <div id="error">
+          <span id="error"><%= flash[:error] %></span>
+        </div>
+      <%- end %>
+      <%- if flash[:notice] %>
+        <div id="notice">
+          <span><%= flash[:notice] %></span>
+        </div>
+      <%- end %>
+      <%= content_for?(:content) ? yield(:content) : yield %>
+      <hr id="break" />
+      <div id="footer">
+        <a href="http://github.com/dickeytk/twentyone" id="version">Version: <%= version %></a>
+        <ul id="footer-links">
+          <% if @current_user %>
+            <li><%= link_to_unless_current("Your friends' habits", friends_path, :class => 'footer-link') do %><%- end %></li>
+            <%- if @current_user.habits.any? %>
+              <li><%= link_to_unless_current("Your habit", habit_path, :class => 'footer-link') do %><%- end %></li>
+            <%- else %>
+              <li><%= link_to_unless_current("Create habit", habit_create_path, :class => 'footer-link') do %><%- end %></li>
+            <%- end %>
+              <li><%= link_to "Logout", logout_path, :class => 'footer-link', :class => 'footer-link' %></li>
+            <% if @current_user.admin? %>
+              <li><a class="footer-link" href="<%= url_for admin_root_path %>">Admin</a></li>
+            <% end %>
+          <% end %>
+        </ul>
+        <span id="credits">Made by <a href="http://jeffdickey.info/">Jeff Dickey</a></span>
+      </div>
+    </div>
   </body>
 </html>

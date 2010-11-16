@@ -19,7 +19,10 @@ div#body {
 body, html {
     background-color: #111;
 }
-
+#header {
+  position:relative;
+  padding-bottom:30px;
+}
 h1 {
     font-size: 50pt;
     color: #ff5e00;
@@ -49,7 +52,6 @@ hr#break {
     text-align:center;
     display:block;
     margin-top:20px;
-    margin-bottom:30px;
     font-size:20pt;
 }
 .footer-link {
@@ -153,4 +155,9 @@ input[type="submit"]:active, .button:active {
   right:0px;
   bottom:-40px;
   font-size:12pt;
+}
+#like-button {
+  position:absolute;
+  bottom:0px;
+  left:20px;
 }
