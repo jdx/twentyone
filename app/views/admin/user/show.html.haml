@@ -7,6 +7,8 @@
       %li Name #{@user.name}
     -if @user.username
       %li Username #{@user.username}
+    -if @user.phone_number
+      %li Phone Number #{@user.phone_number}
     -if @user.facebook_identifier
       %li Facebook Identifier #{@user.facebook_identifier}
     %li Created at #{@user.created_at}
