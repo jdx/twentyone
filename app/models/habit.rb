@@ -18,6 +18,13 @@ class Habit < ActiveRecord::Base
   def current_day
     return (Date.today + 1 - self.start_date).to_i
   end
+
+  def notification_time
+    unless self.next_notification
+      return nil
+    end
+    return self.next_notification.localtime.strftime '%I:%M%p'
+  end
   
   def send_notification
     logger.info "Sending notification to #{ self.user }"
