@@ -18,6 +18,8 @@ class HomeController < ApplicationController
       return redirect_to root_path
     end
 
+    @username = params[:username]
+
     # Validation
     @errors = {}
     unless params[:username] =~ /^[A-Za-z](?=[A-Za-z0-9_.]{3,31}$)[a-zA-Z0-9_]*\.?[a-zA-Z0-9_]*$/

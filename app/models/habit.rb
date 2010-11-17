@@ -19,6 +19,11 @@ class Habit < ActiveRecord::Base
     return (Date.today + 1 - self.start_date).to_i
   end
 
+  def finished_dates
+    finished_dates = []
+    self.habit_days.each { |f| finished_dates << f.date }
+  end
+
   def notification_time
     unless self.next_notification
       return nil

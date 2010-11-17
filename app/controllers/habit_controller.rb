@@ -22,9 +22,6 @@ class HabitController < ApplicationController
       return redirect_to :action => :create
     end
     @habit = @current_user.current_habit
-    @finished_dates = []
-    @habit.habit_days.each { |f| @finished_dates << f.date }
-    logger.debug @finished_dates.inspect
   end
 
   def toggle_today
