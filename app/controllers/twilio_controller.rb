@@ -17,12 +17,7 @@ class TwilioController < ApplicationController
           response = "You are no longer receiving daily notifications."
 
         elsif body == 'STATUS'
-          response = "You've completed #{ user.current_habit.habit_days.count }/21 days of #{ user.current_habit }. You have missed #{ user.current_habit.missed_days } days."
-          if user.current_habit.notification_time
-            response = response + "You receive daily notifications at #{ user.current_habit.notification_time }."
-          else
-            response = response + "You don't receive daily notifications. Go to http://twentyonedayhabit.com/ to start!"
-          end
+          response = "#{ user.current_habit.habit_days.count }/21 days of #{ user.current_habit }. Missed #{ user.current_habit.missed_days } days."
 
         elsif body == 'DONE'
           today ||= user.current_habit.habit_days.find_by_date(Date.today)
@@ -32,8 +27,8 @@ class TwilioController < ApplicationController
           response = "Sweet! You've completed #{ user.current_habit.habit_days.count }/21 days!"
 
         else
-          response = "I don't understand that. Say DONE to complete your habit today. Say STATUS to check your habit's status. "
-          response = response + "Say STOP to stop receiving notifications." if user.current_habit.notification_time
+          response = "I don't understand that. Say DONE to complete your habit today. STATUS to check your habit's status. "
+          response = response + "STOP to stop notifications." if user.current_habit.notification_time
         end
 
       else
