@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   has_many :habits
+  validates_uniqueness_of :username
+  validates_uniqueness_of :facebook_identifier
+  validates_uniqueness_of :phone_number
 
   def name
     return "%s %s" % [ self.first_name, self.last_name ]
