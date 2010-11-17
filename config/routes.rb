@@ -11,6 +11,7 @@ Twentyone::Application.routes.draw do
   match 'habit/cancel' => "habit#cancel"
   match 'friends' => "friend#index"
   match 'twilio/sms' => 'twilio#sms'
+  match 'notifications/send' => 'notifications#send'
   namespace 'admin' do
     root :to => "admin#index"
     resources :user, :only => [:index, :show]
