@@ -14,7 +14,7 @@ class TwilioController < ApplicationController
         if body == 'STOP'
           user.current_habit.notification_time = nil
           user.save()
-          return render :text => "You are no longer receiving daily notifications."
+          response = "You are no longer receiving daily notifications."
 
         elsif body == 'STATUS'
           response = "You've completed #{ user.current_habit.habit_days.count }/21 days of #{ user.current_habit }. "
@@ -23,29 +23,28 @@ class TwilioController < ApplicationController
           else
             response = response + "You don't receive daily notifications. Go to http://twentyonedayhabit.com/ to start!"
           end
-          return render :text => response
 
         elsif body == 'DONE'
           today ||= user.current_habit.habit_days.find_by_date(Date.today)
           unless today
             HabitDay.create :habit => user.current_habit, :date => Date.today
           end
-          return render :text => "Sweet! You've completed #{ user.current_habit.habit_days.count }/21 days!"
+          response = "Sweet! You've completed #{ user.current_habit.habit_days.count }/21 days!"
 
         else
           response = "I don't understand that. Say DONE to complete your habit today. Say STATUS to check your habit's status. "
           response = response + "Say STOP to stop receiving notifications." if user.notification_time
-          return render :text => response.strip
         end
 
       else
-        return render :text => "You don't have a current habit. Go to http://twentyonedayhabit.com/ and make one!"
+        response = "You don't have a current habit. Go to http://twentyonedayhabit.com/ and make one!"
       end
 
     else
-      return render :text => "I don't know who you are! Sign up at http://twentyonedayhabit.com/ first!"
+      response = "I don't know who you are! Sign up at http://twentyonedayhabit.com/ first!"
     end
 
+    return render :text => response.strip, :content_type => 'text/plain'
   end
 
 end
