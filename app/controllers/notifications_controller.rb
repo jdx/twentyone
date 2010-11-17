@@ -5,7 +5,7 @@ class NotificationsController < ApplicationController
 
   def send_all
     unless request.post?
-      #return render :nothing => true, :status => 404
+      return render :nothing => true, :status => 404
     end
     logger.info 'Sending notifications...'
     Habit.where('next_notification < ?', DateTime.now).each do |habit|
