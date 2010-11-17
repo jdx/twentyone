@@ -33,7 +33,7 @@ class TwilioController < ApplicationController
 
         else
           response = "I don't understand that. Say DONE to complete your habit today. Say STATUS to check your habit's status. "
-          response = response + "Say STOP to stop receiving notifications." if user.notification_time
+          response = response + "Say STOP to stop receiving notifications." if user.current_habit.notification_time
         end
 
       else
