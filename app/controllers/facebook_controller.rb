@@ -2,10 +2,16 @@ require 'open-uri'
 
 class FacebookController < ApplicationController
   skip_before_filter :require_login
+  rescue_from OpenURI:HTTPError, :with => :facebook_error
 
   def login
     uri = "https://graph.facebook.com/oauth/authorize?client_id=#{ ENV['FB_APP_ID'] }&redirect_uri=#{ auth_facebook_callback_url }"
     redirect_to uri
+  end
+
+  def facebook_error
+    flash[:error] = "Error talking to Facebook, try again. If it still doesn't work, log out of Facebook and try it"
+    redirect_to root_url
   end
 
   def callback
