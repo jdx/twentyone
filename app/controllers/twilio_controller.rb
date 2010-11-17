@@ -17,11 +17,11 @@ class TwilioController < ApplicationController
           response = "You are no longer receiving daily notifications."
 
         elsif body == 'STATUS'
-          response = "You've completed #{ user.current_habit.habit_days.count }/21 days of #{ user.current_habit }. "
+          response = "You've completed #{ user.current_habit.habit_days.count }/21 days of \"#{ user.current_habit }\". "
           if user.current_habit.notification_time
             response = response + "You receive daily notifications at #{ user.current_habit.notification_time }."
           else
-            response = response + "You don't receive daily notifications. Go to http://twentyonedayhabit.com/ to start!"
+            response = response + "You don't receive daily notifications. Go to #{ http://twentyonedayhabit.com/ } to start!"
           end
 
         elsif body == 'DONE'
