@@ -1,6 +1,7 @@
 # Be sure to restart your server when you modify this file.
 
-Twentyone::Application.config.cookie_store :key => '_twentyone_session'
+require 'action_dispatch/middleware/session/dalli_store'
+Rails.application.config.session_store :dalli_store, :memcache_server => ENV['MEMCACHE_SERVERS'], :namespace => 'sessions', :key => '_foundation_session', :expire_after => 30.minutes
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information

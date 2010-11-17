@@ -32,6 +32,7 @@ GEM
     arel (1.0.1)
       activesupport (~> 3.0.0)
     builder (2.1.2)
+    dalli (0.11.1)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     faraday (0.5.3)
@@ -51,8 +52,6 @@ GEM
       i18n (~> 0.4.1)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    memcache-client (1.8.5)
-    memcached-northscale (0.19.5.4)
     mime-types (1.16)
     multi_json (0.0.5)
     multipart-post (1.0.1)
@@ -91,9 +90,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dalli
   fb_graph
   haml
-  memcache-client
-  memcached-northscale
   rails (= 3.0.1)
   sqlite3-ruby
