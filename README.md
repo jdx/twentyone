@@ -1,7 +1,7 @@
 Twenty One Day Habit
 ====================
 
-Twenty One Day Habit is a website located at [http://twentyonedayhabit.heroku.com/](http://twentyonedayhabit.heroku.com/). Go there if you want to know what the site is about. This document is about the technical implementation.
+Twenty One Day Habit is a website located at [http://twentyonedayhabit.com/](http://twentyonedayhabit.com/). Go there if you want to know what the site is about. This document is about the technical implementation.
 
 Versions
 --------
@@ -22,4 +22,7 @@ Wish list
 * Allow admin to delete users
 * Allow admin to reset password
 * Make a logo, put it on jeffdickey.info
+* Put this on: http://developers.facebook.com/docs/reference/plugins/like-box using http://www.facebook.com/apps/application.php?id=165102360190591
 * Allow facebook login to redirect on FbGraph::Exception
+* Notifications (email, sms, google calendar, ics) with a time
+* If shit gets hairy: LINODE
