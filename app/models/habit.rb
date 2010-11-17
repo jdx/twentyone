@@ -22,6 +22,7 @@ class Habit < ActiveRecord::Base
   def finished_dates
     finished_dates = []
     self.habit_days.each { |f| finished_dates << f.date }
+    return finished_dates
   end
 
   def notification_time

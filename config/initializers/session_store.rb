@@ -1,7 +1,7 @@
 # Be sure to restart your server when you modify this file.
 
 require 'action_dispatch/middleware/session/dalli_store'
-Rails.application.config.session_store :dalli_store, :memcache_server => ENV['MEMCACHE_SERVERS'], :namespace => 'sessions', :key => '_foundation_session', :expire_after => 30.minutes
+Rails.application.config.session_store :dalli_store, :memcache_server => ENV['MEMCACHE_SERVERS'], :namespace => 'sessions', :key => '_foundation_session'
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information
