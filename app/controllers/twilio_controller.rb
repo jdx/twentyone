@@ -23,12 +23,10 @@ class TwilioController < ApplicationController
         return nohabit
       end
     else
-      @current_user ||= User.find_by_sms_code(body)
+      @current_user ||= User.find_by_sms_code(body.downcase)
       if @current_user
         return setup_user(params[:From])
       else
-        response = "#{body}I don't know who you are! Sign up at http://twentyonedayhabit.com/ first!"
-        return render :text => response.strip, :content_type => 'text/plain'
         return unknown_user
       end
     end
