@@ -32,6 +32,7 @@ GEM
     arel (1.0.1)
       activesupport (~> 3.0.0)
     builder (2.1.2)
+    dalli (0.11.1)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     faraday (0.5.3)
@@ -89,6 +90,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dalli
   fb_graph
   haml
   rails (= 3.0.1)
