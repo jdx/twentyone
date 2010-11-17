@@ -19,7 +19,6 @@ Wish list
 * Show past habits if they exist
 * Index database
 * Look into integrating with other sites (Facebook posting?)
-* Fade in X on toggle_day
 * Allow admin to delete users
 * Allow admin to reset password
 * Make a logo, put it on jeffdickey.info
