@@ -1,5 +1,5 @@
 class NotificationsController < ApplicationController
-  skip_before_filter :require_login, :only => :send
+  skip_before_filter :require_login, :only => :send_all
 
   def send_all
     unless request.post?
