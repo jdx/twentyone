@@ -21,7 +21,7 @@ class TwilioController < ApplicationController
           if user.current_habit.notification_time
             response = response + "You receive daily notifications at #{ user.current_habit.notification_time }."
           else
-            response = response + "You don't receive daily notifications. Go to #{ http://twentyonedayhabit.com/ } to start!"
+            response = response + "You don't receive daily notifications. Go to http://twentyonedayhabit.com/ to start!"
           end
 
         elsif body == 'DONE'
