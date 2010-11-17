@@ -1,6 +1,4 @@
 Twentyone::Application.routes.draw do
-  get "facebook/callback"
-
   root :to => "home#index"
   match 'login' => "home#login"
   match 'logout' => "home#logout"
@@ -12,6 +10,7 @@ Twentyone::Application.routes.draw do
   match 'habit/toggle_today' => "habit#toggle_today"
   match 'habit/cancel' => "habit#cancel"
   match 'friends' => "friend#index"
+  match 'twilio/sms' => 'twilio#sms'
   namespace 'admin' do
     root :to => "admin#index"
     resources :user, :only => [:index, :show]
