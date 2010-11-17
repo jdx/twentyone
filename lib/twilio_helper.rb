@@ -1,5 +1,3 @@
-require 'twiliolib'
-
 API_VERSION = '2010-04-01'
 ACCOUNT_SID = ENV['TWILIO_ACCOUNT_SID']
 ACCOUNT_TOKEN = ENV['TWILIO_ACCOUNT_TOKEN']
@@ -14,6 +12,9 @@ module TwilioHelper
       'Body' => body
     }
     resp = account.request("/#{API_VERSION}/Accounts/#{ACCOUNT_SID}/SMS/Messages", "POST", data)
+    puts data.inspect
+    puts resp.inspect
+    puts PHONE_NUMBER
     resp.error! unless resp.kind_of? Net::HTTPSuccess
   end
 end

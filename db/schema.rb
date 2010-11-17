@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101117060320) do
+ActiveRecord::Schema.define(:version => 20101117073457) do
 
   create_table "habit_days", :force => true do |t|
     t.integer  "habit_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20101117060320) do
     t.string   "what"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.time     "notification_time"
+    t.datetime "next_notification"
   end
 
   add_index "habits", ["start_date"], :name => "index_habits_on_start_date"
