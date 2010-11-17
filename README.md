@@ -25,3 +25,5 @@ Wish list
 * Allow facebook login to redirect on FbGraph::Exception
 * Notifications (email, google calendar, ics) with a time
 * If shit gets hairy: LINODE
+* Instead of asking for when the user wants to start, keep shifting the start date up so the first day is the day they start.
+* Remove start date from form and database if possible
