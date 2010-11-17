@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101116065507) do
+ActiveRecord::Schema.define(:version => 20101117041214) do
 
   create_table "habit_days", :force => true do |t|
     t.integer  "habit_id"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(:version => 20101116065507) do
     t.datetime "updated_at"
   end
 
+  add_index "habit_days", ["date"], :name => "index_habit_days_on_date"
+  add_index "habit_days", ["habit_id"], :name => "index_habit_days_on_habit_id"
+
   create_table "habits", :force => true do |t|
     t.integer  "user_id"
     t.date     "start_date"
@@ -26,6 +29,9 @@ ActiveRecord::Schema.define(:version => 20101116065507) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "habits", ["start_date"], :name => "index_habits_on_start_date"
+  add_index "habits", ["user_id"], :name => "index_habits_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "first_name"
@@ -38,5 +44,8 @@ ActiveRecord::Schema.define(:version => 20101116065507) do
     t.string   "username"
     t.string   "password"
   end
+
+  add_index "users", ["facebook_identifier"], :name => "index_users_on_facebook_identifier"
+  add_index "users", ["username"], :name => "index_users_on_username"
 
 end
