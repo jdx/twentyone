@@ -20,4 +20,26 @@ class User < ActiveRecord::Base
     return habits[0]
   end
 
+  def friends
+    cached = User.where(:facebook_identifier => facebook_friend_ids)
+  end
+
+protected
+
+  def facebook_friend_ids
+    cache_key = "user_#{ self.id }_friends"
+    fb_ids = Rails.cache.read(cache_key)
+    unless fb_ids
+      fb_ids = []
+      fbuser.friends.each { |f| fb_ids << f.identifier }
+      Rails.cache.write(cache_key, fb_ids)
+    end
+    logger.debug fb_ids.inspect
+    return fb_ids
+  end
+
+  def fbuser
+    access_token = self.facebook_access_token
+    return FbGraph::User.me(access_token)
+  end
 end

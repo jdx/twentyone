@@ -10,7 +10,7 @@ class FacebookController < ApplicationController
   end
 
   def facebook_error
-    flash[:error] = "Error talking to Facebook, try again. If it still doesn't work, log out of Facebook and try it"
+    flash[:error] = "Error talking to Facebook, try again. If it still doesn't work, log out of Facebook and try it again."
     redirect_to root_url
   end
 

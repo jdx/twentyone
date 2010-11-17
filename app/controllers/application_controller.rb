@@ -15,14 +15,6 @@ class ApplicationController < ActionController::Base
   end
 
 protected
-  def fbuser
-    unless @current_user
-      return nil
-    end
-    access_token = @current_user.facebook_access_token
-    fbuser = FbGraph::User.me(access_token).fetch
-  end
-
   def current_user
     @current_user ||= User.find_by_id(session[:user_id])
   end
