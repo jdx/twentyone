@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101117084140) do
+ActiveRecord::Schema.define(:version => 20101117164137) do
 
   create_table "habit_days", :force => true do |t|
     t.integer  "habit_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20101117084140) do
     t.string   "username"
     t.string   "password"
     t.string   "phone_number"
+    t.string   "sms_code"
   end
 
   add_index "users", ["facebook_identifier"], :name => "index_users_on_facebook_identifier"

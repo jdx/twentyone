@@ -49,7 +49,6 @@ class HabitController < ApplicationController
     end
     @habit = @current_user.current_habit
     if request.post?
-      @habit.habit_days.each { |h| h.destroy }
       @habit.destroy
       flash[:notice] = "You have canceled your habit."
       return redirect_to :action => :create

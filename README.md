@@ -9,7 +9,7 @@ Versions
 * **1.0**: Sleep is for the weak (public release) 11/14/2010 Initial release, stayed up too late, added habits.
 * **1.1**: Too many chicken wings 11/15/2010 Improved styles, added additional login, refactored Facebook authentication, ate a shit ton of chicken wings, allowed merging of users.
 * **1.2**: It's a taquito Tuesday Facebook friend caching, memcache, session caching, fading in and out of "x", indexing database
-* **2.0**: SMS integration
+* **2.0**: SMS integration, better support for destroying data
 
 Wish list
 ---------
@@ -19,11 +19,9 @@ Wish list
 * Firefox compatibility (-moz and stuff)
 * Show past habits if they exist
 * Look into integrating with other sites (Facebook posting?)
-* Allow admin to delete users
-* Allow admin to reset password
-* Make a logo, put it on jeffdickey.info
 * Allow facebook login to redirect on FbGraph::Exception
 * Notifications (email, google calendar, ics) with a time
 * If shit gets hairy: LINODE
 * Instead of asking for when the user wants to start, keep shifting the start date up so the first day is the day they start.
-* Remove start date from form and database if possible
+* Remove start date from form and database if possible - add current_habit to user, make start_date a method
+* Long polling (websockets?) to update sms and stuff

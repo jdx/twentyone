@@ -1,8 +1,12 @@
+require 'digest/md5'
+
 class User < ActiveRecord::Base
   has_many :habits
-  validates_uniqueness_of :username
-  validates_uniqueness_of :facebook_identifier
-  validates_uniqueness_of :phone_number
+  validates_uniqueness_of :username, :allow_nil => true
+  validates_uniqueness_of :facebook_identifier, :allow_nil => true
+  validates_uniqueness_of :phone_number, :allow_nil => true
+  before_create :before_create
+  before_destroy :before_destroy
 
   def name
     return "%s %s" % [ self.first_name, self.last_name ]
@@ -44,5 +48,13 @@ protected
   def fbuser
     access_token = self.facebook_access_token
     return FbGraph::User.me(access_token)
+  end
+
+  def before_create
+    self.sms_code = Digest::MD5.new.to_s[1..5]
+  end
+
+  def before_destroy
+    self.habits.each { |h| h.destroy }
   end
 end

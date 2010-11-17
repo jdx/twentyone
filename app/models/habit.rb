@@ -2,6 +2,7 @@ class Habit < ActiveRecord::Base
   validates_presence_of :user_id, :what, :start_date
   belongs_to :user
   has_many :habit_days
+  before_destroy :before_destroy
 
   def to_s
     return self.what.sub(/\.$/, '')
@@ -44,4 +45,9 @@ class Habit < ActiveRecord::Base
       self.save()
     end
   end
+
+  def before_destroy
+    self.habit_days.each { |h| h.destroy }
+  end
+
 end

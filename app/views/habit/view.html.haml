@@ -30,29 +30,10 @@
         - end until day.wday == 0
       - weeks = weeks + 1
   .content-block
-    - if @habit.notification_hour
-      %a.notifications-form Edit SMS Notifications
+    - if @current_user.phone_number
+      %span#sms-enable You have enabled SMS integration!
     - else
-      %a.notifications-form Enable SMS Notifications
-    #notification-form{ :class => @errors && "show-block" }
-      = form_tag notification_edit_path do
-        - if @errors
-          %ul.error-list
-            - @errors.each do |error|
-              %li= error[1]
-        %p
-          %label{ :for => 'phone' } Phone number
-          %input#phone{ :name => 'phone', :type => 'text', :value => @habit.user.phone_number }
-        %p
-          %label{ :for => 'time' } Time
-          %select#hour{ :name => 'hour' }
-            - for i in 1..12 do
-              %option{ :value => i, :selected => i == (@habit.notification_hour || 8) && "true" } #{i}:00AM
-            - for i in 1..12 do
-              %option{ :value => i+12, :selected => i+12 == @habit.notification_hour } #{i}:00PM
-        %input{ :type => "submit", :value => 'Save' }
-        - if @habit.notification_hour
-          %input.remove{ :type => "submit", :value => 'Remove' }
+      %span#sms-enable Text #{ ENV['TWILIO_PHONE_NUMBER'] } this code: <b>#{ @current_user.sms_code }</b> to enable SMS integration.
   #total
     %span#days-completed= @habit.finished_dates.count
     %span /

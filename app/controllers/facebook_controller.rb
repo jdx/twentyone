@@ -44,7 +44,6 @@ class FacebookController < ApplicationController
         # Let's just create the user
         user = User.create({:first_name => fb_user.first_name,
                             :last_name => fb_user.last_name,
-                            :admin => false,
                             :facebook_identifier => fb_user.identifier})
       end
     end

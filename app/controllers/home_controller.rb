@@ -47,9 +47,7 @@ class HomeController < ApplicationController
         @errors["password"] = "Password for #{ user.username } invalid"
       end
     else
-      user = User.create({:username => params[:username],
-                          :password => Digest::MD5.hexdigest(params[:password]),
-                          :admin => false})
+      user = User.create({:username => params[:username], :password => Digest::MD5.hexdigest(params[:password])})
       session[:user_id] = user.id
     end
 
