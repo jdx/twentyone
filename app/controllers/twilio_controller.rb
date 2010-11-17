@@ -51,7 +51,7 @@ protected
 
   def stop
     @current_user.current_habit.notification_time = nil
-    @current_user.save()
+    @current_user.save
     response = "You are no longer receiving daily notifications."
     return render :text => response.strip, :content_type => 'text/plain'
   end
@@ -69,7 +69,7 @@ protected
 
   def setup_user(phone_number)
     @current_user.phone_number = phone_number
-    @curent_user.save
+    @current_user.save
     response = "Got it, #{ @current_user }!"
     return render :text => response.strip, :content_type => 'text/plain'
   end
