@@ -17,3 +17,4 @@ Wish list
 * Figure out what to do when a user finishes their habit
 * Show past habits if they exist
 * iPhone app - going to need an API
+* Disabling of notifications via site
