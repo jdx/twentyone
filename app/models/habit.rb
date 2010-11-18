@@ -38,6 +38,7 @@ class Habit < ActiveRecord::Base
       d = DateTime.parse("#{ Date.today }T#{ hour }:00:00-800")
     end
     self.next_notification = Time.parse(d.to_s)
+    self.save
   end
 
   def start_date
