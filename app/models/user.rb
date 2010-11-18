@@ -54,9 +54,11 @@ protected
 
   def before_create
     self.sms_code = Digest::MD5.hexdigest(user.to_s + Time.now.to_s)[1..8]
+    return true
   end
 
   def before_destroy
     self.habits.each { |h| h.destroy }
+    return true
   end
 end
