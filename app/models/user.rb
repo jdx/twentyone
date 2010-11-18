@@ -2,9 +2,11 @@ require 'digest/md5'
 
 class User < ActiveRecord::Base
   has_many :habits
+  validates_presence_of :sms_code
   validates_uniqueness_of :username, :allow_nil => true
   validates_uniqueness_of :facebook_identifier, :allow_nil => true
   validates_uniqueness_of :phone_number, :allow_nil => true
+  validates_uniqueness_of :sms_code
   before_create :before_create
   before_destroy :before_destroy
 
@@ -51,7 +53,7 @@ protected
   end
 
   def before_create
-    self.sms_code = Digest::MD5.new.to_s[1..5]
+    self.sms_code = Digest::MD5.hexdigest(user.to_s + Time.now.to_s)[1..8]
   end
 
   def before_destroy
