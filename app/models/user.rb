@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :facebook_identifier, :allow_nil => true
   validates_uniqueness_of :phone_number, :allow_nil => true
   validates_uniqueness_of :sms_code
+  before_create :before_create
   before_destroy :before_destroy
 
   def name
@@ -50,8 +51,8 @@ protected
     return FbGraph::User.me(access_token)
   end
 
-  def after_create
-    self.sms_code = Digest::MD5.hexdigest(user.to_s + Time.now.to_s)[1..8]
+  def before_create
+    self.sms_code = Digest::MD5.hexdigest(self.to_s + Time.now.to_s)[1..8]
   end
 
   def before_destroy
