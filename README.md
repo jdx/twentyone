@@ -15,13 +15,5 @@ Wish list
 ---------
 * Add social features
 * Figure out what to do when a user finishes their habit
-* iPhone app - going to need an API
-* Firefox compatibility (-moz and stuff)
 * Show past habits if they exist
-* Look into integrating with other sites (Facebook posting?)
-* Allow facebook login to redirect on FbGraph::Exception
-* Notifications (email, google calendar, ics) with a time
-* If shit gets hairy: LINODE
-* Instead of asking for when the user wants to start, keep shifting the start date up so the first day is the day they start.
-* Remove start date from form and database if possible - add current_habit to user, make start_date a method
-* Long polling (websockets?) to update sms and stuff
+* iPhone app - going to need an API
