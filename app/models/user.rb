@@ -2,12 +2,13 @@ require 'digest/md5'
 
 class User < ActiveRecord::Base
   has_many :habits
+  belongs_to :current_habit, :foreign_key => "current_habit_id", :class_name => "Habit"
   validates_uniqueness_of :username, :allow_nil => true
   validates_uniqueness_of :facebook_identifier, :allow_nil => true
   validates_uniqueness_of :phone_number, :allow_nil => true
   validates_uniqueness_of :sms_code
-  before_create :before_create
-  before_destroy :before_destroy
+  before_create :set_sms_code
+  before_destroy :delete_habits
 
   def name
     return "%s %s" % [ self.first_name, self.last_name ]
@@ -21,11 +22,6 @@ class User < ActiveRecord::Base
     else
       self.id
     end
-  end
-
-  def current_habit
-    habits = self.habits.all(:order => 'start_date DESC')
-    return habits[0]
   end
 
   def friends
@@ -51,11 +47,11 @@ protected
     return FbGraph::User.me(access_token)
   end
 
-  def before_create
+  def set_sms_code
     self.sms_code = Digest::MD5.hexdigest(self.to_s + Time.now.to_s)[1..8]
   end
 
-  def before_destroy
+  def delete_habits
     self.habits.each { |h| h.destroy }
   end
 end

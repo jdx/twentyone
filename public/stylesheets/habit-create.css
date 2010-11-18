@@ -1,54 +1,30 @@
-.form-body {
-  margin-top:20px;
-  margin-bottom:20px;
+#create-habit-form {
+  text-align:center;
+}
+#create-habit-what {
   font-size:16pt;
-  height:200px;
-  margin-top:20px;
-  margin-left:15px;
-  margin-right:15px;
-}
-.form-body span {
-  display: block;
-}
-.form-body .input {
-  float:left;
-}
-.form-body input {
-  display: block;
-  font-size:16pt;
-  font-family:Diavlo;
+  font-family:'Diavlo';
   line-height:1.2;
   border-bottom: 1px dashed black;
   border-top: none;
   border-right: none;
   border-left: none;
   margin-top:20px;
-  margin-bottom:30px;
-  color: #ff5e00;
-}
-#what {
+  color:#ff5e00;
   width:560px;
+  text-align:center;
 }
-#samples ul li {
+#create-habit-start {
+}
+#create-habit-ideas ul li {
   color:#33afff;
   cursor:pointer;
-  margin-left:10px;
+  margin-left:18px;
   margin-top:10px;
+  display:inline;
 }
-#samples {
+#create-habit-ideas {
   font-size:12pt;
-  float:right;
-}
-#samples .info {
-  margin-bottom:15px;
-}
-#samples .tip {
-  margin-top:10px;
+  font-weight:bold;
   text-align:center;
-  display:block;
-}
-#when {
-  margin-left:10px;
-  font-size:16pt;
-  font-family:Diavlo;
 }

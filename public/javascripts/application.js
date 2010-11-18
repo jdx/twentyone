@@ -6,17 +6,18 @@ $(document).ready(function() {
 
 function setup_login() {
   $('#no-facebook').click(function() {
-    $('#regular-login').show();
+    $('#regular-login').slideDown();
   });
 }
 
 function setup_habit_create() {
-  $('#samples ul li').click(function() {
-      $('#what').attr('value', $(this).text());
+  $('#create-habit-ideas ul li').click(function() {
+      $('#create-habit-what').attr('value', $(this).text());
   });
 }
 
 function setup_habit_view() {
+  $('#notification-edit-link').click(setup_edit_notification);
   $('#calendar .today').click(function() {
       $.ajax({
         type: 'POST',
@@ -40,5 +41,30 @@ function setup_habit_view() {
           }
         },
       });
+  });
+}
+
+function setup_edit_notification() {
+  link = $(this).hide();
+  form = $('#notification-edit-form').css('display', 'inline');
+  select = form.find('select');
+  select.val(link.attr('hour'));
+  select.change(function() {
+    hour = $(this).val();
+    $.ajax({
+      type:'POST',
+      url:'/notification/edit',
+      data:{'hour':hour},
+      success: function(data) {
+        form.hide();
+        link.show();
+        link.attr('hour', data['hour']); 
+        link.text(data['time']); 
+      },
+      error: function(data) {
+        form.hide();
+        link.show();
+      }
+    });
   });
 }

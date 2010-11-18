@@ -1,0 +1,13 @@
+%h2 Create a habit.
+%span#description I am going to start doing this every day...
+= form_tag({:controller => "habit", :action => "create"}, { :id => 'create-habit-form' } ) do 
+  %input{ :type => "text", :placeholder => "Exercise for 20 minutes a day.", :id => "create-habit-what", :name => "what", :maxlength => "50", :size => "50"}
+  %br
+  %input{ :type => "submit", :value => "Start the habit!", :id => "create-habit-start" }
+%div{ :id => "create-habit-ideas" }
+  %ul
+    %li Get up before 6 AM.
+    %li Write a blog article.
+    %li Drink a liter of water in the morning.
+    %li Meditate.
+    %li Exercise for 20 minutes a day.

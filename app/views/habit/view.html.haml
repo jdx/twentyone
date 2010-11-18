@@ -29,13 +29,23 @@
           - day = day + 1
         - end until day.wday == 0
       - weeks = weeks + 1
+  #habit-summary
+    %span.bold#days-completed= @habit.finished_dates.count
+    %span out of
+    %span.bold#days-total 21
+    %span days completed with
+    %span.bold#missed-days= @habit.missed_days
+    %span missed day#{ @habit.missed_days != 1 ? 's' : '' }.
   .content-block
     - if @current_user.phone_number
-      %span#sms-enable You have enabled SMS integration!
+      %span#sms-enable You have receive an SMS reminder every day at <a hour="#{ @habit.next_notification.localtime.hour }" title="Click to edit." id="notification-edit-link">#{ @habit.notification_time }</a>
+      = form_tag( notification_edit_path, { :id => "notification-edit-form", :class => "notification-edit-form" } ) do
+        %select
+          - for hour in 1..12 do 
+            %option{ :value => hour } #{ hour }:00 AM
+          - for hour in 1..12 do 
+            %option{ :value => hour + 12 } #{ hour }:00 PM
+      ='.'
     - else
-      %span#sms-enable Text #{ ENV['TWILIO_PHONE_NUMBER'] } this code: <b>#{ @current_user.sms_code }</b> to enable SMS integration.
-  #total
-    %span#days-completed= @habit.finished_dates.count
-    %span /
-    %span#days-total 21
+      %span#sms-enable Text <b>949-391-2512</b> saying <b>#{ @current_user.sms_code }</b> to get a daily reminder.
   %a=link_to "Start a new habit", :controller => "habit", :action => "cancel"

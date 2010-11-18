@@ -161,3 +161,6 @@ input[type="submit"]:active, .button:active {
   bottom:0px;
   left:20px;
 }
+.bold {
+  font-weight:bold;
+}

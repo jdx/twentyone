@@ -1,8 +1,8 @@
 class Habit < ActiveRecord::Base
-  validates_presence_of :user_id, :what, :start_date
+  validates_presence_of :user_id, :what
   belongs_to :user
-  has_many :habit_days
-  before_destroy :before_destroy
+  has_many :habit_days, :order => :date
+  before_destroy :delete_habit_days
 
   def to_s
     return self.what.sub(/\.$/, '')
@@ -27,16 +27,27 @@ class Habit < ActiveRecord::Base
   end
 
   def notification_time
-    unless self.next_notification
-      return nil
+    return self.next_notification.localtime.strftime('%I:%M %p').sub(/^0?(.*)$/, '\1') if self.next_notification
+    return nil
+  end
+
+  def set_notification_hour(hour=8, tomorrow=false)
+    if Time.now.hour > hour or tomorrow
+      d = DateTime.parse("#{ Date.today + 1.day }T#{ hour }:00:00-800")
+    else
+      d = DateTime.parse("#{ Date.today }T#{ hour }:00:00-800")
     end
-    return self.next_notification.localtime.strftime '%I:%M%p'
+    self.next_notification = Time.parse(d.to_s)
+  end
+
+  def start_date
+    return self.habit_days.first ? self.habit_days.first.date : Date.today
   end
   
   def send_notification
     logger.info "Sending notification to #{ self.user }"
     if self.user.phone_number
-      self.next_notification = self.next_notification + 1.day
+      self.next_notification = self.set_notification_hour(self.next_notification.hour, true)
       self.save
       TwilioHelper.send_sms(self.user.phone_number, "Day #{ self.current_day } of #{ self }. You've missed #{ self.missed_days } days. To complete, reply DONE.")
     else
@@ -46,7 +57,7 @@ class Habit < ActiveRecord::Base
     end
   end
 
-  def before_destroy
+  def delete_habit_days
     self.habit_days.each { |h| h.destroy }
   end
 

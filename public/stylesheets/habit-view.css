@@ -43,9 +43,24 @@
   font-family:'arial';
   opacity:.5;
 }
-#total {
+#habit-summary {
   font-size:24pt;
   margin-top:40px;
   margin-bottom:15px;
   text-align:center;
+}
+#habit-summary .bold {
+  color:#ff5e00;
+}
+#sms-enable {
+  font-family:'Droid sans';
+}
+#notification-edit-link {
+  font-size:12pt;
+}
+.notification-edit-form {
+  display:inline;
+}
+#notification-edit-form {
+  display:none;
 }

@@ -7,12 +7,13 @@ class HabitController < ApplicationController
     end
     if request.post?
       what = params[:what]
-      start_date = params[:when]
-      unless what and not what.blank?
+      if what.blank?
         flash[:error] = "You gotta say what you're going to do."
         return
       end
-      Habit.create :what => what, :start_date => start_date, :user => @current_user
+      habit = Habit.create :what => what, :user => @current_user
+      @current_user.current_habit = habit
+      @current_user.save
       return redirect_to :action => :view
     end
   end

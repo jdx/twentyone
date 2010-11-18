@@ -1,5 +1,5 @@
 module ApplicationHelper
   def version
-    "1.2: It's a taquito Tuesday"
+    "2.0: Noise complaints are a sign of work!"
   end
 end

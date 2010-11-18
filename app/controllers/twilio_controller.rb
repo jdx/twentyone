@@ -50,32 +50,32 @@ protected
   end
 
   def stop
-    @current_user.current_habit.notification_time = nil
+    @current_user.phone_number = nil
     @current_user.save
     response = "You are no longer receiving daily notifications."
     return render :text => response.strip, :content_type => 'text/plain'
   end
 
   def unknown_request
-    response = "I don't understand that. Say DONE to complete your habit today. STATUS to check your habit's status. "
-    response = response + "STOP to stop notifications." if @current_user.current_habit.notification_time
+    response = "Say DONE to complete your habit today. STATUS to check your habit's status. STOP to stop notifications."
     return render :text => response.strip, :content_type => 'text/plain'
   end
 
   def nohabit
-    response = "You don't have a current habit. Go to http://twentyonedayhabit.com/ and make one!"
+    response = "You don't have a current habit. Go to twentyonedayhabit.com and make one!"
     return render :text => response.strip, :content_type => 'text/plain'
   end
 
   def setup_user(phone_number)
     @current_user.phone_number = phone_number
+    @current_user.current_habit.set_notification_hour
     @current_user.save
-    response = "Got it, #{ @current_user }!"
+    response = "Got it, #{ @current_user }! You are now receiving notifications at #{ @current_user.current_habit.notification_time }. Go to twentyonedayhabit.com to change the time."
     return render :text => response.strip, :content_type => 'text/plain'
   end
 
   def unknown_user
-    response = "I don't know who you are! Sign up at http://twentyonedayhabit.com/ first!"
+    response = "I don't know who you are! Sign up at twentyonedayhabit.com first!"
     return render :text => response.strip, :content_type => 'text/plain'
   end
 
