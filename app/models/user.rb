@@ -2,12 +2,10 @@ require 'digest/md5'
 
 class User < ActiveRecord::Base
   has_many :habits
-  validates_presence_of :sms_code
   validates_uniqueness_of :username, :allow_nil => true
   validates_uniqueness_of :facebook_identifier, :allow_nil => true
   validates_uniqueness_of :phone_number, :allow_nil => true
   validates_uniqueness_of :sms_code
-  before_create :before_create
   before_destroy :before_destroy
 
   def name
@@ -52,13 +50,11 @@ protected
     return FbGraph::User.me(access_token)
   end
 
-  def before_create
+  def after_create
     self.sms_code = Digest::MD5.hexdigest(user.to_s + Time.now.to_s)[1..8]
-    return true
   end
 
   def before_destroy
     self.habits.each { |h| h.destroy }
-    return true
   end
 end
