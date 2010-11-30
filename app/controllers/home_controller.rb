@@ -1,15 +1,13 @@
 require 'digest/md5'
 
 class HomeController < ApplicationController
-  skip_before_filter :require_login, :only => [ :index, :login ]
+  skip_before_filter :require_login, :only => :login
 
   def index
-    if logged_in?
-      if @current_user.habits.any?
-        return redirect_to :controller => :habit, :action => :view
-      else
-        return redirect_to :controller => :habit, :action => :create
-      end
+    if @current_user.habits.any?
+      return redirect_to :controller => :habit, :action => :view
+    else
+      return redirect_to :controller => :habit, :action => :create
     end
   end
 
