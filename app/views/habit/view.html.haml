@@ -38,7 +38,7 @@
     %span missed day#{ @habit.missed_days != 1 ? 's' : '' }.
   .content-block
     - if @current_user.phone_number
-      %span#sms-enable You receive a text message reminders every day at <a hour="#{ @habit.next_notification.localtime.hour }" title="Click to edit." id="notification-edit-link">#{ @habit.notification_time }</a>
+      %span#sms-enable You receive a daily text message reminder every day at <a hour="#{ @habit.next_notification.localtime.hour }" title="Click to edit." id="notification-edit-link">#{ @habit.notification_time }</a>
       = form_tag( notification_edit_path, { :id => "notification-edit-form", :class => "notification-edit-form" } ) do
         %select
           - for hour in 1..12 do 
