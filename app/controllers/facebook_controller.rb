@@ -16,6 +16,9 @@ class FacebookController < ApplicationController
   end
 
   def callback
+    if params[:error]
+      return redirect_to root_path
+    end
     uri = "https://graph.facebook.com/oauth/access_token?client_id=#{ ENV['FB_APP_ID'] }&redirect_uri=#{ auth_facebook_callback_url }&client_secret=#{ ENV['FB_APP_SECRET'] }&code=#{ CGI::escape(params[:code]) }"
     response = open(uri).read
     access_token = CGI.parse(response)["access_token"][0]
