@@ -17,7 +17,9 @@
     <%= csrf_meta_tag %>
     <meta property="og:description" content="Helps you build better habits!" />
     <meta property="og:image" content="http://twentyonedayhabit.com/img/single_day.png" />
-
+    <%- if Rails.env.development? %>
+      <script src="http://localhost:8001/vogue-client.js" type="text/javascript"></script>
+    <%- end %>
     <!-- Google Analytics -->
     <script type="text/javascript">
       var _gaq = _gaq || [];

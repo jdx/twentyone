@@ -1,0 +1,17 @@
+package_assets: on
+embed_assets: datauri
+
+javascripts:
+  common:
+    - public/javascripts/jquery-1.4.4.min.js
+    - public/javascripts/application.js
+
+stylesheets:
+  common:
+    - public/stylesheets/reset.css
+    - public/stylesheets/main.css
+    - public/stylesheets/login.css
+    - public/stylesheets/habit-create.css
+    - public/stylesheets/habit-view.css
+    - public/stylesheets/friends-list.css
+    - public/stylesheets/admin.css
