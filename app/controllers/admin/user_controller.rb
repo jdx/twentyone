@@ -1,6 +1,6 @@
 class Admin::UserController < Admin::AdminController
   def index
-    @users = User.all
+    @users = User.order('-updated_at')
   end
 
   def show

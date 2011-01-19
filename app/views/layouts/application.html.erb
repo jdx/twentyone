@@ -5,14 +5,8 @@
     <link rel="icon" type="image/png" href="/img/favicon.png" />
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold&subset=latin' rel='stylesheet' type='text/css'>
     <link href="http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold&subset=latin" rel="stylesheet" type="text/css" >
-    <%= stylesheet_link_tag "reset" %>
-    <%= stylesheet_link_tag "main" %>
-    <%= stylesheet_link_tag "login" %>
-    <%= stylesheet_link_tag "habit-create" %>
-    <%= stylesheet_link_tag "habit-view" %>
-    <%= stylesheet_link_tag "friends-list" %>
-    <%= javascript_include_tag "jquery-1.4.4.min" %>
-    <%= javascript_include_tag "application" %>
+    <%= include_stylesheets :common, :media => "all" %>
+    <%= include_javascripts :common %>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <%= csrf_meta_tag %>
     <meta property="og:description" content="Helps you build better habits!" />

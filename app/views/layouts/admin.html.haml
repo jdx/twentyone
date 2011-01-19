@@ -1,5 +1,4 @@
 - content_for :content do
-  = link_to "View All Users", admin_user_index_path
-  = link_to "View All Habits", admin_habit_index_path
+  %h2 Admin
   = yield
 = render :file => 'layouts/application'

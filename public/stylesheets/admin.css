@@ -1,0 +1,24 @@
+#admin-links {
+    text-align:center;
+}
+
+#admin-links li {
+    display:inline-block;
+    margin:20px 20px;
+}
+
+#users {
+    margin:20px auto;
+}
+
+#users td, #users th {
+    padding:5px 10px;
+}
+
+#users tr:nth-child(even) {
+    background-color:#ddd;
+}
+
+#users tr:nth-child(odd) {
+    background-color:#eee;
+}
