@@ -47,11 +47,11 @@ class Habit < ActiveRecord::Base
   
   def send_notification
     logger.info "Sending notification to #{ self.user }"
-    if self.user.phone_number
+    if self.user.phone_number and self.current_day >= 21
       self.set_notification_hour(self.next_notification.localtime.hour, true)
       TwilioHelper.send_sms(self.user.phone_number, "Day #{ self.current_day } of #{ self } missed #{ self.missed_days } days. To complete, reply DONE. To end these texts STOP.")
     else
-      # user has no phone number, delete the notification
+      # user has no phone number, or has passed 21 days, delete the notification
       self.next_notification = nil
       self.save()
     end
