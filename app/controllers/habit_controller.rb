@@ -33,10 +33,10 @@ class HabitController < ApplicationController
     today ||= habit.habit_days.find_by_date Date.today
     if today
       today.destroy
-      result = { :status => "Removed" }
+      result = { :status => "Removed", :days_completed => habit.days_completed }
     else
       HabitDay.create :habit => habit, :date => Date.today
-      result = { :status => "Created" }
+      result = { :status => "Created", :days_completed => habit.days_completed }
     end
     respond_to do |format|
       format.html { redirect_to :action => :view }

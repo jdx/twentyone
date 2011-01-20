@@ -27,17 +27,13 @@ function setup_habit_view() {
             var x = $('<span style="display:none;" class="x">X</span>');
             $('#calendar .today .container').append(x);
             x.fadeIn();
-            days_completed = $('#days-completed');
-            num_days_completed = parseInt(days_completed.text()) + 1;
-            days_completed.text(num_days_completed);
+            $('#days-completed').text(data['days_completed']);
           }
           else {
             $('#calendar .today .container .x').fadeOut(function() {
               $(this).remove();
             });
-            days_completed = $('#days-completed');
-            num_days_completed = parseInt(days_completed.text()) - 1;
-            days_completed.text(num_days_completed);
+            $('#days-completed').text(data['days_completed']);
           }
         },
       });
