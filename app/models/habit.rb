@@ -27,8 +27,11 @@ class Habit < ActiveRecord::Base
   end
 
   def notification_time
-    return self.next_notification.localtime.strftime('%I:%M %p').sub(/^0?(.*)$/, '\1') if self.next_notification
-    return nil
+    if self.next_notification
+      return self.next_notification.strftime "%I:%M %p"
+    else
+      return nil
+    end
   end
 
   def set_notification_hour(hour=8, tomorrow=false)
@@ -37,14 +40,14 @@ class Habit < ActiveRecord::Base
     else
       d = DateTime.parse("#{ Time.zone.now.to_date }T#{ hour }:00:00#{ Time.zone.formatted_offset(false) }")
     end
-    self.next_notification = Time.zone.parse(d.to_s)
-    self.save
+    self.next_notification = Time.parse(d.to_s)
+    self.save!
   end
 
   def start_date
     return self.habit_days.first ? self.habit_days.first.date : Time.zone.now.to_date
   end
-  
+
   def send_notification
     logger.info "Sending notification to #{ self.user }"
     if self.user.phone_number and self.current_day <= 21
