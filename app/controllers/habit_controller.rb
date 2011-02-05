@@ -12,8 +12,9 @@ class HabitController < ApplicationController
         return
       end
       habit = Habit.create :what => what, :user => @current_user
+      @current_user.time_zone = params[:user][:time_zone]
       @current_user.current_habit = habit
-      @current_user.save
+      @current_user.save!
       return redirect_to :action => :view
     end
   end
@@ -30,12 +31,12 @@ class HabitController < ApplicationController
       return redirect_to :action => :create
     end
     habit = @current_user.current_habit
-    today ||= habit.habit_days.find_by_date Date.today
+    today ||= habit.habit_days.find_by_date Time.zone.now.to_date
     if today
       today.destroy
       result = { :status => "Removed", :days_completed => habit.days_completed }
     else
-      HabitDay.create :habit => habit, :date => Date.today
+      HabitDay.create :habit => habit, :date => Time.zone.now.to_date
       result = { :status => "Created", :days_completed => habit.days_completed }
     end
     respond_to do |format|

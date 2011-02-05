@@ -1,4 +1,4 @@
-class AddNextNotificationIndex < ActiveRecord::Migration
+class AddUpdatedAtIndex < ActiveRecord::Migration
   def self.up
     add_index :users, :updated_at
   end

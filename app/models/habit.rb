@@ -9,7 +9,7 @@ class Habit < ActiveRecord::Base
   end
 
   def missed_days
-    return ((Date.today - self.start_date) - HabitDay.where('habit_id = ? AND date < ?', self.id, Date.today).count).to_i
+    return ((Time.zone.now.to_date - self.start_date) - HabitDay.where('habit_id = ? AND date < ?', self.id, Time.zone.now.to_date).count).to_i
   end
 
   def days_completed
@@ -17,7 +17,7 @@ class Habit < ActiveRecord::Base
   end
 
   def current_day
-    return (Date.today + 1 - self.start_date).to_i
+    return (Time.zone.now.to_date + 1 - self.start_date).to_i
   end
 
   def finished_dates
@@ -32,17 +32,17 @@ class Habit < ActiveRecord::Base
   end
 
   def set_notification_hour(hour=8, tomorrow=false)
-    if Time.now.hour > hour or tomorrow
-      d = DateTime.parse("#{ Date.today + 1.day }T#{ hour }:00:00-800")
+    if Time.zone.now.hour > hour or tomorrow
+      d = DateTime.parse("#{ Time.zone.now.to_date + 1.day }T#{ hour }:00:00#{ Time.zone.formatted_offset(false) }")
     else
-      d = DateTime.parse("#{ Date.today }T#{ hour }:00:00-800")
+      d = DateTime.parse("#{ Time.zone.now.to_date }T#{ hour }:00:00#{ Time.zone.formatted_offset(false) }")
     end
     self.next_notification = Time.parse(d.to_s)
     self.save
   end
 
   def start_date
-    return self.habit_days.first ? self.habit_days.first.date : Date.today
+    return self.habit_days.first ? self.habit_days.first.date : Time.zone.now.to_date
   end
   
   def send_notification

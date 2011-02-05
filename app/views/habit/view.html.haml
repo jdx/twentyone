@@ -17,7 +17,7 @@
     - until weeks == max_weeks
       %tr 
         - begin
-          %td{:class => day == Date.today ? "today" : day < Date.today ? "past" : "" }
+          %td{:class => day == Time.zone.now.to_date ? "today" : day < Time.zone.now.to_date ? "past" : "" }
             .container
               - if day >= @habit.start_date && day < @habit.start_date + 21
                 %span= "Day %s" % (day + 1 - @habit.start_date).to_s

@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :check_domain
   before_filter :require_login
+  before_filter :set_time_zone
   rescue_from FbGraph::Exception, :with => :fbexception
 
   def fbexception
@@ -17,6 +18,10 @@ class ApplicationController < ActionController::Base
 protected
   def current_user
     @current_user ||= User.find_by_id(session[:user_id])
+  end
+
+  def set_time_zone
+    Time.zone = current_user.time_zone if current_user
   end
 
   def logged_in?
