@@ -37,7 +37,7 @@ class Habit < ActiveRecord::Base
     else
       d = DateTime.parse("#{ Time.zone.now.to_date }T#{ hour }:00:00#{ Time.zone.formatted_offset(false) }")
     end
-    self.next_notification = Time.parse(d.to_s)
+    self.next_notification = Time.zone.parse(d.to_s)
     self.save
   end
 
