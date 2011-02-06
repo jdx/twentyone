@@ -19,7 +19,7 @@ class NotificationsController < ApplicationController
       return render :nothing => true, :status => 404
     end
     @current_user.current_habit.set_notification_hour(params[:hour].to_i)
-    TwilioHelper.send_sms(@current_user.phone_number, "You are now receiving notifications at #{ @current_user.current_habit.notification_time.strftime "%I:%M %p" }.")
+    TwilioHelper.send_sms(@current_user.phone_number, "You are now receiving notifications at #{ @current_user.current_habit.notification_time }.")
     return render :json => { :hour => params[:hour], :time => @current_user.current_habit.notification_time }
   end
 end
