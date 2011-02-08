@@ -2,35 +2,38 @@
 @font-face { font-family: "Diavlo"; font-weight:bold; src: url('/fonts/Diavlo_MEDIUM_II_37.otf'); }
 
 div#body {
-    margin-left:auto;
-    margin-right:auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    padding:10px;
-    width:960px;
-    border-radius:5px;
-    border: 1px #ff5e00 solid;
-    -webkit-box-shadow: 0 0 4px #ff5e00;
-    -moz-box-shadow: 0 0 4px #ff5e00;
-    -o-box-shadow: 0 0 4px #ff5e00;
-    background-color: #fff;
-    font-family:'Diavlo';
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding:10px;
+  width:960px;
+  border-radius:5px;
+  border: 1px #ff5e00 solid;
+  -webkit-box-shadow: 0 0 4px #ff5e00;
+  -moz-box-shadow: 0 0 4px #ff5e00;
+  -o-box-shadow: 0 0 4px #ff5e00;
+  background-color: #fff;
+  font-family:'Diavlo';
 }
 body, html {
-    background-color: #111;
+  background-color: #111;
 }
 #header {
   position:relative;
   padding-bottom:30px;
 }
 h1 {
-    text-shadow: 0 1px 2px #666;
-    margin-top:15px;
-    text-align:center;
+  text-shadow: 0 1px 2px #666;
+  margin-top:15px;
+  text-align:center;
 }
 h1 a, h1 a:visited {
-    color: #ff5e00;
-    font-size: 50pt;
+  color: #ff5e00;
+  font-size: 50pt;
+}
+h1 a:hover {
+  text-decoration:none;
 }
 h2 {
   text-align:center;
@@ -44,22 +47,22 @@ h3 {
   color: #ff5e00;
 }
 hr#break {
-    border-top: 1px #333 solid;
-    border-left: 0;
-    border-right: 0;
-    border-bottom: 0;
+  border-top: 1px #333 solid;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
 }
 #tagline {
-    color: #5c90dc;
-    text-align:center;
-    display:block;
-    margin-top:20px;
-    font-size:20pt;
+  color: #5c90dc;
+  text-align:center;
+  display:block;
+  margin-top:20px;
+  font-size:20pt;
 }
 .footer-link {
-    font-size:16pt;
-    margin-left:20px;
-    font-weight:bold;
+  font-size:16pt;
+  margin-left:20px;
+  font-weight:bold;
 }
 #footer-links {
   margin-top:20px;
@@ -74,32 +77,32 @@ hr#break {
   position:relative;
 }
 #credits {
-    font-size:16pt;
-    display:block;
-    margin:20px 20px 15px;
-    font-weight:bold;
-    float:right;
+  font-size:16pt;
+  display:block;
+  margin:20px 20px 15px;
+  font-weight:bold;
+  float:right;
 }
 a, a:visited {
-    text-decoration:none;
-    color:#5c90dc;
-    cursor: pointer;
-    font-size:16pt;
+  text-decoration:none;
+  color:#5c90dc;
+  cursor: pointer;
+  font-size:16pt;
 }
 a:hover {
-    text-decoration:underline;
+  text-decoration:underline;
 }
 .content-block {
-    text-align:center;
-    margin-top:40px;
-    margin-bottom:40px;
+  text-align:center;
+  margin-top:40px;
+  margin-bottom:40px;
 }
 #error, #notice {
-    margin-top:40px;
-    margin-bottom:40px;
-    text-align:center;
-    font-style:italic;
-    font-family:'Droid serif';
+  margin-top:40px;
+  margin-bottom:40px;
+  text-align:center;
+  font-style:italic;
+  font-family:'Droid serif';
 }
 #error {
   color:red;
