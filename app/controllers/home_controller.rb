@@ -13,7 +13,7 @@ class HomeController < ApplicationController
     end
   end
 
-  def like21
+  def faq
   end
 
   def login

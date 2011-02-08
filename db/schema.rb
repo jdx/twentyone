@@ -13,23 +13,23 @@
 ActiveRecord::Schema.define(:version => 20110205222739) do
 
   create_table "habit_days", :force => true do |t|
-    t.integer   "habit_id"
-    t.date      "date"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.integer  "habit_id"
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "habit_days", ["date"], :name => "index_habit_days_on_date"
   add_index "habit_days", ["habit_id"], :name => "index_habit_days_on_habit_id"
 
   create_table "habits", :force => true do |t|
-    t.integer   "user_id"
-    t.date      "start_date"
-    t.string    "what"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.timestamp "next_notification"
-    t.integer   "notification_hour"
+    t.integer  "user_id"
+    t.date     "start_date"
+    t.string   "what"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "next_notification"
+    t.integer  "notification_hour"
   end
 
   add_index "habits", ["next_notification"], :name => "index_habits_on_next_notification"
@@ -37,19 +37,19 @@ ActiveRecord::Schema.define(:version => 20110205222739) do
   add_index "habits", ["user_id"], :name => "index_habits_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string    "first_name"
-    t.string    "last_name"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.boolean   "admin"
-    t.string    "facebook_identifier"
-    t.string    "facebook_access_token"
-    t.string    "username"
-    t.string    "password"
-    t.string    "phone_number"
-    t.string    "sms_code"
-    t.integer   "current_habit_id"
-    t.string    "time_zone",             :default => "Pacific Time (US & Canada)", :null => false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "admin"
+    t.string   "facebook_identifier"
+    t.string   "facebook_access_token"
+    t.string   "username"
+    t.string   "password"
+    t.string   "phone_number"
+    t.string   "sms_code"
+    t.integer  "current_habit_id"
+    t.string   "time_zone",             :default => "Pacific Time (US & Canada)", :null => false
   end
 
   add_index "users", ["facebook_identifier"], :name => "index_users_on_facebook_identifier"
