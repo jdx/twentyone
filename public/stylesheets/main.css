@@ -71,23 +71,27 @@ hr#break {
   height:55px;
   position:relative;
 }
-#credits {
+#credits, #advertising {
     font-size:16pt;
-    float:right;
     display:block;
-    margin-right:20px;
-    margin-top:20px;
-    margin-bottom:15px;
+    margin:20px 20px 15px;
     font-weight:bold;
 }
-a {
+#credits {
+    float:right;
+}
+#advertising {
+    float:left;
+}
+a, a:visited {
     text-decoration:none;
     color:#5c90dc;
     cursor: pointer;
     font-size:16pt;
 }
 a:hover {
-  text-decoration:underline;
+    text-decoration:underline;
+    color:#5c90dc;
 }
 .content-block {
     text-align:center;
@@ -95,11 +99,11 @@ a:hover {
     margin-bottom:40px;
 }
 #error, #notice {
-  margin-top:40px;
-  margin-bottom:40px;
-  text-align:center;
-  font-style:italic;
-  font-family:'Droid serif';
+    margin-top:40px;
+    margin-bottom:40px;
+    text-align:center;
+    font-style:italic;
+    font-family:'Droid serif';
 }
 #error {
   color:red;
