@@ -71,17 +71,12 @@ hr#break {
   height:55px;
   position:relative;
 }
-#credits, #advertising {
+#credits {
     font-size:16pt;
     display:block;
     margin:20px 20px 15px;
     font-weight:bold;
-}
-#credits {
     float:right;
-}
-#advertising {
-    float:left;
 }
 a, a:visited {
     text-decoration:none;

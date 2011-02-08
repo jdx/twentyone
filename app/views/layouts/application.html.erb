@@ -75,9 +75,8 @@
       <hr id="break" />
       <div id="footer">
         <a href="http://github.com/dickeytk/twentyone" id="version">Version: <%= version %></a>
-        <a href="<%= link21_path %>" id="advertising">Like Twenty One Day Habit?</a>
         <ul id="footer-links">
-          <% if @current_user %>
+          <%- if @current_user %>
             <li><%= link_to_unless_current("Your friends' habits", friends_path, :class => 'footer-link') do %><%- end %></li>
             <%- if @current_user.habits.any? %>
               <li><%= link_to_unless_current("Your habit", habit_path, :class => 'footer-link') do %><%- end %></li>
@@ -85,10 +84,11 @@
               <li><%= link_to_unless_current("Create habit", habit_create_path, :class => 'footer-link') do %><%- end %></li>
             <%- end %>
               <li><%= link_to "Logout", logout_path, :class => 'footer-link', :class => 'footer-link' %></li>
-            <% if @current_user.admin? %>
+            <%- if @current_user.admin? %>
               <li><a class="footer-link" href="<%= url_for admin_root_path %>">Admin</a></li>
-            <% end %>
-          <% end %>
+            <%- end %>
+            <li><a href="<%= link21_path %>" class="footer-link">Like Twenty One Day Habit?</a></li>
+          <%- end %>
         </ul>
         <span id="credits">Made by <a href="http://jeffdickey.info/">Jeff Dickey</a></span>
       </div>
