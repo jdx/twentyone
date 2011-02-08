@@ -190,3 +190,11 @@ input[type="submit"]:active, .button:active {
   font-size:12pt;
   font-family:'Droid Serif';
 }
+::selection {
+  text-shadow:0;
+  background:orange;
+}
+::-moz-selection {
+  text-shadow:0;
+  background:orange;
+}
