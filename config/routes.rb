@@ -13,6 +13,7 @@ Twentyone::Application.routes.draw do
   match 'twilio/sms' => 'twilio#sms'
   match 'notifications/send' => 'notifications#send_all'
   match 'notification/edit' => 'notifications#edit'
+  match 'like21' => 'home#like21'
   namespace 'admin' do
     root :to => "admin#index"
     resources :user, :only => [:index, :show]
