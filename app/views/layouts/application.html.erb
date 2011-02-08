@@ -75,6 +75,7 @@
       <hr id="break" />
       <div id="footer">
         <a href="http://github.com/dickeytk/twentyone" id="version">Version: <%= version %></a>
+        <a href="<%= link21_path %>" id="advertising">Like Twenty One Day Habit?</a>
         <ul id="footer-links">
           <% if @current_user %>
             <li><%= link_to_unless_current("Your friends' habits", friends_path, :class => 'footer-link') do %><%- end %></li>
@@ -90,7 +91,6 @@
           <% end %>
         </ul>
         <span id="credits">Made by <a href="http://jeffdickey.info/">Jeff Dickey</a></span>
-        <span id="advertising"><a href="http://jeffdickey.info/">Like Twenty One Day Habit?</a></span>
       </div>
     </div>
   </body>
