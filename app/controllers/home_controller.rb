@@ -13,6 +13,9 @@ class HomeController < ApplicationController
     end
   end
 
+  def faq
+  end
+
   def login
     unless request.post?
       return redirect_to root_path

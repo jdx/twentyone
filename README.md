@@ -10,11 +10,9 @@ Versions
 * **1.1**: Too many chicken wings 11/15/2010 Improved styles, added additional login, refactored Facebook authentication, ate a ton of chicken wings, allowed merging of users.
 * **1.2**: It's a taquito Tuesday Facebook friend caching, memcache, session caching, fading in and out of "x", indexing database
 * **2.0**: SMS integration, better support for destroying data
+* **2.1**: Time zone support!
 
 Wish list
 ---------
-* Add social features
 * Figure out what to do when a user finishes their habit
 * Show past habits if they exist
-* iPhone app - going to need an API
-* Disabling of notifications via site
